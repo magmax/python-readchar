@@ -24,7 +24,7 @@ Installation
 
    pip install readchar
 
-The `readchar` library is compatible with python 2.6, 2.7, 3.0, 3.1, 3.2 and 3.3.
+The `readchar` library is compatible with python 2.6, 2.7, 3.2 and 3.3.
 
 Usage
 -----
