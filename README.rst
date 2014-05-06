@@ -24,6 +24,10 @@ Installation
 
    pip install readchar
 
+
+Usage
+-----
+
 Usage example:
 
 .. code:: python
@@ -32,6 +36,31 @@ Usage example:
 
   c = readchar.readchar()
   key = readchar.readkey()
+
+API
+----
+
+There are just two methods:
+
+`readchar()`
+^^^^^^^^^^^^
+
+Reads the next char from `stdin`, returning it as a string with length 1.
+
+
+`readkey()`
+^^^^^^^^^^^^
+
+Reads the next key-stroke from `stdin`, returning it as an string.
+
+A key-stroke can have:
+
+- 1 character for normal keys: 'a', 'z', '9'...
+- 2 characters for combinations with ALT: ALT+A, ...
+- 3 characters for cursors: ->, <-, ...
+- 4 characters for combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
+
+There is a list of previously captured chars with their names in `readchar.key`, in order to be used in comparations and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
 
 
 License
