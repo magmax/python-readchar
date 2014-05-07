@@ -1,6 +1,5 @@
 import unittest
 
-
 from readchar import readkey
 
 
