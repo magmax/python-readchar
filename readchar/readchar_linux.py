@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+# Initially taken from:
+# http://code.activestate.com/recipes/134892/
+# Thanks to Danny Yoo
+import sys
 import tty
 import termios
 
