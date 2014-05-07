@@ -44,13 +44,11 @@ API
 There are just two methods:
 
 `readchar()`
-^^^^^^^^^^^^
 
 Reads the next char from `stdin`, returning it as a string with length 1.
 
 
 `readkey()`
-^^^^^^^^^^^^
 
 Reads the next key-stroke from `stdin`, returning it as an string.
 
@@ -64,10 +62,20 @@ A key-stroke can have:
 There is a list of previously captured chars with their names in `readchar.key`, in order to be used in comparations and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
 
 
+SO Support
+----------
+
+Sadly, this library has only being probed in GNU/Linux. Please, if you can try it in another SO and find a bug, put an issue or send the pull-request.
+
+Thank you!
+
+
 License
 =======
 
 Copyright (c) 2014 Miguel Ángel García (`@magmax9`_).
+
+Based on previous work on gist `getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe)`_, started by `Danny Yoo`_.
 
 Licensed under `the MIT license`_.
 
@@ -94,3 +102,5 @@ Licensed under `the MIT license`_.
 .. _@magmax9: https://twitter.com/magmax9
 
 .. _the MIT license: http://opensource.org/licenses/MIT
+.. _getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe): http://code.activestate.com/recipes/134892/
+.. _Danny Yoo: http://code.activestate.com/recipes/users/98032/

@@ -1,32 +1,18 @@
 # -*- coding: utf-8 -*-
+# This file is based on this gist:
+# http://code.activestate.com/recipes/134892/
+# So real authors are DannyYoo and company.
 import sys
 
 
-try:
-    import tty
-    import termios
-    is_unix = True
-except ImportError:
-    import msvcrt
-    is_unix = False
-
-
-def _readchar_unix():
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(sys.stdin.fileno())
-        ch = sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
-
-
-def _readchar_windows():
-    return msvcrt.getch()
-
-
-readchar = _readchar_unix if is_unix else _readchar_windows
+if sys.platform.startswith('linux'):
+    from .readchar_linux import readchar
+elif sys.platform == 'darwin':
+    from .readchar_osx import readchar
+elif sys.platform in ('win32', 'cygwin'):
+    from .readchar_windows import readchar
+else:
+    raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
 
 def readkey(getchar_fn=None):
