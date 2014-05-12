@@ -1,5 +1,5 @@
 # common
-ENTER = '\x0d'
+ENTER = '\x0a'
 BACKSPACE = '\x7f'
 SUPR = ''
 SPACE = '\x20'
