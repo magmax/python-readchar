@@ -1,5 +1,7 @@
 # common
-ENTER = '\x0a'
+LF = '\x0d'
+CR = '\x0a'
+ENTER = '\x0d'
 BACKSPACE = '\x7f'
 SUPR = ''
 SPACE = '\x20'
