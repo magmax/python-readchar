@@ -65,9 +65,49 @@ There is a list of previously captured chars with their names in `readchar.key`,
 SO Support
 ----------
 
-Sadly, this library has only being probed in GNU/Linux. Please, if you can try it in another SO and find a bug, put an issue or send the pull-request.
+Sadly, this library has only being probed on GNU/Linux. Please, if you can try it in another SO and find a bug, put an issue or send the pull-request.
 
 Thank you!
+
+How to contribute
+=================
+
+You can download the code, make some changes with their tests, and make a pull-request.
+
+In order to develop or running the tests, you can do:
+
+1. Clone the repository.
+
+.. code:: bash
+
+   git clone https://github.com/magmax/python-readchar.git
+
+2. Create a virtual environment:
+
+.. code:: bash
+
+   virtualenv venv
+
+3. Enter in the virtual environment
+
+.. code:: bash
+
+   . venv/bin/activate
+
+4. Install dependencies
+
+.. code:: bash
+
+    pip -r requirements.txt -r requirements-dev.txt
+
+5. Run tests
+
+.. code:: bash
+
+    make
+
+
+Please, **Execute the tests before any pull-request**. This will avoid invalid builds.
 
 
 License
