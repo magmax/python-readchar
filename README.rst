@@ -49,11 +49,13 @@ API
 There are just two methods:
 
 :code:`readchar()`
+//////////////////
 
 Reads the next char from :code:`stdin`, returning it as a string with length 1.
 
 
 :code:`readkey()`
+/////////////////
 
 Reads the next key-stroke from :code:`stdin`, returning it as an string.
 
