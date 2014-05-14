@@ -1,3 +1,8 @@
+See it at:
+
+- `pypi`_
+- `GitHub`_
+
 ==============  ===============  =========  ============
 VERSION         DOWNLOADS        TESTS      COVERAGE
 ==============  ===============  =========  ============
@@ -24,7 +29,7 @@ Installation
 
    pip install readchar
 
-The `readchar` library is compatible with python 2.6, 2.7, 3.2 and 3.3.
+The :code:`readchar` library is compatible with python 2.6, 2.7, 3.2 and 3.3.
 
 Usage
 -----
@@ -43,14 +48,14 @@ API
 
 There are just two methods:
 
-`readchar()`
+:code:`readchar()`
 
-Reads the next char from `stdin`, returning it as a string with length 1.
+Reads the next char from :code:`stdin`, returning it as a string with length 1.
 
 
-`readkey()`
+:code:`readkey()`
 
-Reads the next key-stroke from `stdin`, returning it as an string.
+Reads the next key-stroke from :code:`stdin`, returning it as an string.
 
 A key-stroke can have:
 
@@ -59,7 +64,7 @@ A key-stroke can have:
 - 3 characters for cursors: ->, <-, ...
 - 4 characters for combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
 
-There is a list of previously captured chars with their names in `readchar.key`, in order to be used in comparations and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
+There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparations and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
 
 
 SO Support
@@ -136,6 +141,8 @@ Licensed under `the MIT license`_.
     :target: https://pypi.python.org/pypi/readchar
     :alt: Number of PyPI downloads
 
+.. _pypi: https://pypi.python.org/pypi/readchar
+.. _GitHub: https://github.com/magmax/python-readchar
 .. _python-inquirer: https://github.com/magmax/python-inquirer
 .. _Travis: https://travis-ci.org/magmax/python-readchar
 .. _Coveralls: https://coveralls.io/r/magmax/python-readchar
