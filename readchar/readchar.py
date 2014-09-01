@@ -8,7 +8,7 @@ import sys
 if sys.platform.startswith('linux'):
     from .readchar_linux import readchar
 elif sys.platform == 'darwin':
-    from .readchar_osx import readchar
+    from .readchar_linux import readchar
 elif sys.platform in ('win32', 'cygwin'):
     from .readchar_windows import readchar
 else:
