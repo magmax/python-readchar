@@ -1,4 +1,4 @@
-__version__ = '0.6'
+__version__ = '0.7'
 
 from .readchar import readchar, readkey
 from . import key
