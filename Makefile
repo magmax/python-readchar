@@ -1,6 +1,4 @@
-MODULES=readchar
-
-all: pep8 flakes test
+all: flakes test
 
 test:: clear_coverage run_unit_tests run_acceptance_tests
 
@@ -8,26 +6,22 @@ unit_test:: run_unit_tests
 
 acceptance_test:: run_acceptance_tests
 
-analysis:: pep8 flakes
-
-pep8:
-	@echo Checking PEP8 style...
-	@pep8 --statistics ${MODULES} tests
+analysis:: flakes
 
 flakes:
 	@echo Searching for static errors...
-	@pyflakes ${MODULES}
+	@flake8 --statistics --count readchar
 
 coveralls::
 	coveralls
 
 run_unit_tests:
 	@echo Running Tests...
-	@nosetests -dv --exe --with-xcoverage --cover-package=${MODULES} --cover-tests tests/unit
+	@py.test --cov readchar tests/unit
 
 run_acceptance_tests:
 	@echo Running Tests...
-	@nosetests -dv --exe tests/acceptance
+	@py.test tests/acceptance
 
 clear_coverage:
 	@echo Cleaning previous coverage...
