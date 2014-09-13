@@ -24,4 +24,4 @@ run_acceptance_tests:
 	@py.test tests/acceptance
 
 publish:
-	@python setup.py sdist --formats zip,gztar bdist_wheel
+	@python setup.py sdist --formats zip,gztar bdist_wheel upload
