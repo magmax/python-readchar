@@ -1,6 +1,6 @@
 all: flakes test
 
-test:: clear_coverage run_unit_tests run_acceptance_tests
+test:: run_unit_tests run_acceptance_tests
 
 unit_test:: run_unit_tests
 
@@ -23,6 +23,5 @@ run_acceptance_tests:
 	@echo Running Tests...
 	@py.test tests/acceptance
 
-clear_coverage:
-	@echo Cleaning previous coverage...
-	@coverage erase
+publish:
+	@python setup.py sdist --formats zip,gztar bdist_wheel
