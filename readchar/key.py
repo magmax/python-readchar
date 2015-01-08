@@ -29,3 +29,44 @@ LEFT = '\x1b\x5b\x44'
 RIGHT = '\x1b\x5b\x43'
 
 CTRL_ALT_SUPR = '\x1b\x5b\x33\x5e'
+
+# other
+F1 = '\x1b\x4f\x50'
+F2 = '\x1b\x4f\x51'
+F3 = '\x1b\x4f\x52'
+F4 = '\x1b\x4f\x53'
+F5 = '\x1b\x4f\x31\x35\x7e'
+F6 = '\x1b\x4f\x31\x37\x7e'
+F7 = '\x1b\x4f\x31\x38\x7e'
+F8 = '\x1b\x4f\x31\x39\x7e'
+F9 = '\x1b\x4f\x32\x30\x7e'
+F10 = '\x1b\x4f\x32\x31\x7e'
+F11 = '\x1b\x4f\x32\x33\x7e'
+F11 = '\x1b\x4f\x32\x34\x7e'
+
+INSERT = '\x1b\x5b\x32\x7e'
+SUPR = '\x1b\x5b\x33\x7e'
+
+
+ESCAPE_SEQUENCES = (
+    ESC,
+    ESC + '\x5b',
+    ESC + '\x5b' + '\x31',
+    ESC + '\x5b' + '\x32',
+    ESC + '\x5b' + '\x33',
+    ESC + '\x5b' + '\x31' + '\x35',
+    ESC + '\x5b' + '\x31' + '\x36',
+    ESC + '\x5b' + '\x31' + '\x37',
+    ESC + '\x5b' + '\x31' + '\x38',
+    ESC + '\x5b' + '\x31' + '\x39',
+    ESC + '\x5b' + '\x32' + '\x30',
+    ESC + '\x5b' + '\x32' + '\x31',
+    ESC + '\x5b' + '\x32' + '\x32',
+    ESC + '\x5b' + '\x32' + '\x33',
+    ESC + '\x5b' + '\x32' + '\x34',
+    ESC + '\x4f',
+    ESC + ESC,
+    ESC + ESC + '\x5b',
+    ESC + ESC + '\x5b' + '\x32',
+    ESC + ESC + '\x5b' + '\x33',
+)
