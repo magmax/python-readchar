@@ -5,6 +5,7 @@
 import sys
 import key
 
+
 if sys.platform.startswith('linux'):
     from .readchar_linux import readchar
 elif sys.platform == 'darwin':
