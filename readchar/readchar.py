@@ -16,23 +16,6 @@ else:
     raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
 
-def readkey1(getchar_fn=None):
-    getchar = getchar_fn or readchar
-    c1 = getchar(True)
-    if c1 != key.ESC:
-        return c1
-    c2 = getchar()
-    if c2 is None:
-        return c1
-    if ord(c2) not in (0x5b, 0x4f):
-        return c1 + c2
-    c3 = getchar()
-    if ord(c3) != 0x33:
-        return c1 + c2 + c3
-    c4 = getchar()
-    return c1 + c2 + c3 + c4
-
-
 def readkey(getchar_fn=None):
     getchar = getchar_fn or readchar
     buffer = getchar(True)
