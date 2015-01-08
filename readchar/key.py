@@ -5,6 +5,7 @@ ENTER = '\x0d'
 BACKSPACE = '\x7f'
 SUPR = ''
 SPACE = '\x20'
+ESC = '\x1b'
 
 # CTRL
 CTRL_A = '\x01'

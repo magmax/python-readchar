@@ -7,7 +7,7 @@ def readchar_fn_factory(stream):
 
     v = [x for x in stream]
 
-    def inner():
+    def inner(blocking=False):
         return v.pop(0)
     return inner
 

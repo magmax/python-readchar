@@ -3,7 +3,7 @@
 # http://code.activestate.com/recipes/134892/
 # So real authors are DannyYoo and company.
 import sys
-
+import key
 
 if sys.platform.startswith('linux'):
     from .readchar_linux import readchar
@@ -17,10 +17,12 @@ else:
 
 def readkey(getchar_fn=None):
     getchar = getchar_fn or readchar
-    c1 = getchar()
-    if ord(c1) != 0x1b:
+    c1 = getchar(True)
+    if c1 != key.ESC:
         return c1
     c2 = getchar()
+    if c2 is None:
+        return c1
     if ord(c2) != 0x5b:
         return c1 + c2
     c3 = getchar()

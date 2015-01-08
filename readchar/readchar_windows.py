@@ -5,7 +5,7 @@
 import msvcrt
 
 
-def readchar():
+def readchar(blocking=False):
     "Get a single character on Windows."
 
     while msvcrt.kbhit():
