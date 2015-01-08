@@ -68,7 +68,7 @@ setup(
         'pytest >= 2.6.2',
         'pytest-cov >= 1.8.0',
 
-        'python-coveralls >= 2.4.2',
+        'python-coveralls == 2.4.2',
 
         'wheel >= 0.24.0',
     ],
