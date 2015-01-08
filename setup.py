@@ -64,6 +64,7 @@ setup(
         'flake8 >= 2.2.3',
         'doublex >= 1.8.1',
         'pexpect >= 3.3',
+        'coverage >=3.7.1,<4.0a1',
 
         'pytest >= 2.6.2',
         'pytest-cov >= 1.8.0',
