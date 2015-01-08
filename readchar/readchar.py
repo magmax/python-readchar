@@ -2,8 +2,9 @@
 # This file is based on this gist:
 # http://code.activestate.com/recipes/134892/
 # So real authors are DannyYoo and company.
+from __future__ import absolute_import
 import sys
-import key
+from . import key
 
 
 if sys.platform.startswith('linux'):
