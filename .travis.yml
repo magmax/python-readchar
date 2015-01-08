@@ -6,9 +6,6 @@ python:
   - "3.3"
   - "3.4"
   - "pypy"
-env:
-  - "linux"
-  - "osx"
 
 install:
   - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then pip install unittest2; fi
