@@ -24,7 +24,7 @@ def readkey(getchar_fn=None):
     while True:
         if buffer not in key.ESCAPE_SEQUENCES:
             return buffer
-        c = getchar(True)
+        c = getchar(False)
         if c is None:
             return buffer
         buffer += c

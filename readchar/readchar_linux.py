@@ -9,11 +9,11 @@ import tty
 import termios
 
 
-def readchar(blocking=False):
+def readchar(wait_for_char=True):
     old_settings = termios.tcgetattr(sys.stdin)
     tty.setcbreak(sys.stdin.fileno())
     try:
-        if blocking or select.select([sys.stdin, ], [], [], 0.0)[0]:
+        if wait_for_char or select.select([sys.stdin, ], [], [], 0.0)[0]:
             return os.read(sys.stdin.fileno(), 1)
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
