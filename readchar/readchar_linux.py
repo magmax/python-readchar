@@ -18,4 +18,3 @@ def readchar(wait_for_char=True):
             return char if type(char) is str else char.decode()
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-    return None
