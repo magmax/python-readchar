@@ -13,7 +13,7 @@ python:
 install:
   - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then pip install unittest2; fi
   - python setup.py install
-  - pip install flake8
+  - pip install flake8==2.3.0 python-coveralls==2.5.0
 
 script:
   - make flakes

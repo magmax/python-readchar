@@ -61,15 +61,15 @@ setup(
     zip_safe=False,
     cmdclass={'test': PyTest},
     tests_require=[
-        'flake8 >= 2.2.3',
-        'doublex >= 1.8.1',
-        'pexpect >= 3.3',
+        'flake8   >= 2.3.0',
+        'pep8     >= 1.6.1',
+        'flakes   >= 0.1.9',
+        'doublex  >= 1.8.1',
+        'pexpect  >= 3.3',
         'coverage >=3.7.1,<4.0a1',
 
-        'pytest >= 2.6.2',
+        'pytest     >= 2.6.2',
         'pytest-cov >= 1.8.0',
-
-        'python-coveralls == 2.4.2',
 
         'wheel >= 0.24.0',
     ],
