@@ -8,3 +8,4 @@ dist/
 venv/
 .coverage
 coverage.xml
+.eggs
