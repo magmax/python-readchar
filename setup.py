@@ -61,8 +61,8 @@ setup(
     zip_safe=False,
     cmdclass={'test': PyTest},
     tests_require=[
-        'flake8   >= 2.3.0',
-        'pep8     >= 1.6.1',
+        'flake8   >= 2.4.0',
+        'pep8     == 1.5.7',
         'flakes   >= 0.1.9',
         'doublex  >= 1.8.1',
         'pexpect  >= 3.3',

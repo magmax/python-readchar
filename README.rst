@@ -99,13 +99,13 @@ In order to develop or running the tests, you can do:
 
 .. code:: bash
 
-   . venv/bin/activate
+   source venv/bin/activate
 
 4. Install dependencies
 
 .. code:: bash
 
-    pip -r requirements.txt -r requirements-dev.txt
+    pip install -r requirements.txt -r requirements-dev.txt
 
 5. Run tests
 
