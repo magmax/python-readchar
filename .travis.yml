@@ -15,7 +15,7 @@ matrix:
     - python: "2.7"
       env: TMODE=flake8
 env:
-    TMODE=tests
+    TMODE=test
 
 install:
   - "if [[ $TMODE == 'test' ]]; then pip install pytest; fi"
