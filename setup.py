@@ -12,13 +12,11 @@ def read_description():
 
 
 class PyTest(TestCommand):
-    user_options = [
-        ('pytest-args=', 'a', "Arguments to pass to py.test"),
-    ]
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
 
     def initialize_options(self):
         TestCommand.initialize_options(self)
-        self.pytest_args = []
+        self.pytest_args = ['--cov-report=term-missing']
 
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -28,7 +26,7 @@ class PyTest(TestCommand):
     def run_tests(self):
         # import here, cause outside the eggs aren't loaded
         import pytest
-        errno = pytest.main(self.pytest_args or ['--cov-report=term-missing'])
+        errno = pytest.main(self.pytest_args)
         sys.exit(errno)
 
 
@@ -61,9 +59,6 @@ setup(
     zip_safe=False,
     cmdclass={'test': PyTest},
     tests_require=[
-        'flake8   >= 2.3.0',
-        'pep8     >= 1.6.1',
-        'flakes   >= 0.1.9',
         'doublex  >= 1.8.1',
         'pexpect  >= 3.3',
         'coverage >=3.7.1,<4.0a1',
@@ -71,8 +66,12 @@ setup(
         'pytest     >= 2.6.2',
         'pytest-cov >= 1.8.0',
 
+        'python-coveralls >= 2.5.0',
         'wheel >= 0.24.0',
     ],
     install_requires=[
+    ],
+    setup_requires=[
+        'flake8',
     ],
 )

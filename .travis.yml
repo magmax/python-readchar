@@ -10,17 +10,24 @@ python:
   - "3.4"
   - "pypy"
 
+matrix:
+  include:
+    - python: "2.7"
+      env: TMODE=flake8
+env:
+    TMODE=tests
+
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then pip install unittest2; fi
-  - python setup.py install
-  - pip install flake8==2.3.0 python-coveralls==2.5.0
+  - pip install pytest
+  - "if [[ $TMODE == 'test' ]]; pip install pytest; fi"
+  - "if [[ $TMODE == 'test' ]]; python setup.py install; fi"
 
 script:
-  - make flakes
-  - make test
+  - python setup.py $TMODE
+  - "if [[ $TMODE == 'test' ]]; python setup.py sdist --formats zip,gztar bdist_wheel; fi"
 
 after_success:
-  - make coveralls
+  - "if [[ $TMODE == 'test' ]]; coveralls; fi"
 
 notifications:
   email:
