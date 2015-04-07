@@ -18,16 +18,15 @@ env:
     TMODE=tests
 
 install:
-  - pip install pytest
-  - "if [[ $TMODE == 'test' ]]; pip install pytest; fi"
-  - "if [[ $TMODE == 'test' ]]; python setup.py install; fi"
+  - "if [[ $TMODE == 'test' ]]; then pip install pytest; fi"
+  - "if [[ $TMODE == 'test' ]]; then python setup.py install; fi"
 
 script:
   - python setup.py $TMODE
-  - "if [[ $TMODE == 'test' ]]; python setup.py sdist --formats zip,gztar bdist_wheel; fi"
+  - "if [[ $TMODE == 'test' ]]; then python setup.py sdist --formats zip,gztar bdist_wheel; fi"
 
 after_success:
-  - "if [[ $TMODE == 'test' ]]; coveralls; fi"
+  - "if [[ $TMODE == 'test' ]]; then coveralls; fi"
 
 notifications:
   email:
