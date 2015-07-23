@@ -5,7 +5,7 @@
 import msvcrt
 from keys import windows_keys, windows_special_keys
 
-def readchar(blocking=False):
+def get_char():
 	"""Get a single character on Windows."""
 	ch = msvcrt.getch()
 	if ch in '\x00\xe0':
@@ -16,10 +16,18 @@ def readchar(blocking=False):
 		ch = windows_keys.get(ch, ch)
 	return ch
 
+def readchar(blocking=False):
+	"""gets a character or combo on windows and returns a string. If blocking is True then it will catch ctrl+c and not have them end the program. It will also wait for a key to be pressed before continuing on with the loop."""
+	if blocking:
+		return get_char()
+	else:
+		if msvcrt.kbhit():
+			return get_char()
+
 if __name__ == '__main__':
 	while True:
 		c = readchar()
-		print(c)
-
+		if c:
+			print(c)
 		if c == 'e':
 			break
