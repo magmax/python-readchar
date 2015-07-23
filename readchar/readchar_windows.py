@@ -8,10 +8,7 @@ import msvcrt
 def readchar(blocking=False):
     "Get a single character on Windows."
 
-    while msvcrt.kbhit():
-        msvcrt.getch()
     ch = msvcrt.getch()
-    while ch in '\x00\xe0':
-        msvcrt.getch()
+    if ch in '\000\xe0':
         ch = msvcrt.getch()
-    return ch.decode()
+    return repr(ch)[1:-1]
