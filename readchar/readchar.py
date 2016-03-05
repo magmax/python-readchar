@@ -17,15 +17,7 @@ else:
     raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
 
-def readkey(getchar_fn=None):
+def readkey(getchar_fn=None, blocking=True):
     getchar = getchar_fn or readchar
-    buffer = getchar(True)
-
-    while True:
-        if buffer not in key.ESCAPE_SEQUENCES:
-            return buffer
-        c = getchar(False)
-        if c is None:
-            return buffer
-        buffer += c
+    buffer = getchar(blocking)
     return buffer
