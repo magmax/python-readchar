@@ -1,6 +1,6 @@
 import unittest
 
-from readchar import readkey
+from readchar import readkey, key
 
 
 def readchar_fn_factory(stream):
@@ -46,6 +46,22 @@ class ReadKeyTest(unittest.TestCase):
 
     def test_special_key_combo(self):
         char = '\x1b\x5b\x33\x5e'
+        getchar_fn = readchar_fn_factory(char + 'foo')
+
+        result = readkey(getchar_fn)
+
+        self.assertEqual(char, result)
+
+    def test_page_up(self):
+        char = key.PAGE_UP
+        getchar_fn = readchar_fn_factory(char + 'foo')
+
+        result = readkey(getchar_fn)
+
+        self.assertEqual(char, result)
+
+    def test_page_down(self):
+        char = key.PAGE_DOWN
         getchar_fn = readchar_fn_factory(char + 'foo')
 
         result = readkey(getchar_fn)
