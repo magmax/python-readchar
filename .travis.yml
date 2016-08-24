@@ -5,9 +5,9 @@ sudo: false
 python:
   - "2.6"
   - "2.7"
-  - "3.2"
   - "3.3"
   - "3.4"
+  - "3.5"
   - "pypy"
 
 matrix:
@@ -20,10 +20,12 @@ env:
 install:
   - "if [[ $TMODE == 'test' ]]; then pip install pytest; fi"
   - "if [[ $TMODE == 'test' ]]; then python setup.py install; fi"
+  - pip freeze
+  - ls -lh .eggs || true
 
 script:
   - python setup.py $TMODE
-  - "if [[ $TMODE == 'test' ]]; then python setup.py sdist --formats zip,gztar bdist_wheel; fi"
+  - "if [[ $TMODE == 'test' ]]; then python setup.py sdist bdist_wheel; fi"
 
 after_success:
   - "if [[ $TMODE == 'test' ]]; then coveralls; fi"
