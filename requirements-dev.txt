@@ -1,6 +1,6 @@
 flake8   >= 3.0.3
 doublex  >= 1.8.1
-pexpect  == 4.1.0
+pexpect  == 3.3
 coverage == 4.0.3
 
 pytest     >= 2.7.0
