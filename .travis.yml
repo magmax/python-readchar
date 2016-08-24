@@ -20,11 +20,12 @@ env:
 install:
   - "if [[ $TMODE == 'test' ]]; then pip install pytest; fi"
   - "if [[ $TMODE == 'test' ]]; then python setup.py install; fi"
-  - pip freeze
+  - pip freeze --all
+  - ls -lh .eggs || true
 
 script:
   - python setup.py $TMODE
-  - "if [[ $TMODE == 'test' ]]; then python setup.py sdist --formats zip,gztar bdist_wheel; fi"
+  - "if [[ $TMODE == 'test' ]]; then python setup.py sdist bdist_wheel; fi"
 
 after_success:
   - "if [[ $TMODE == 'test' ]]; then coveralls; fi"
