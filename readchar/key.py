@@ -44,6 +44,11 @@ F10 = '\x1b\x4f\x32\x31\x7e'
 F11 = '\x1b\x4f\x32\x33\x7e'
 F12 = '\x1b\x4f\x32\x34\x7e'
 
+PAGE_UP = '\x1b\x5b\x35\x7e'
+PAGE_DOWN = '\x1b\x5b\x36\x7e'
+HOME = '\x1b\x5b\x48'
+END = '\x1b\x5b\x46'
+
 INSERT = '\x1b\x5b\x32\x7e'
 SUPR = '\x1b\x5b\x33\x7e'
 
@@ -54,6 +59,8 @@ ESCAPE_SEQUENCES = (
     ESC + '\x5b' + '\x31',
     ESC + '\x5b' + '\x32',
     ESC + '\x5b' + '\x33',
+    ESC + '\x5b' + '\x35',
+    ESC + '\x5b' + '\x36',
     ESC + '\x5b' + '\x31' + '\x35',
     ESC + '\x5b' + '\x31' + '\x36',
     ESC + '\x5b' + '\x31' + '\x37',
