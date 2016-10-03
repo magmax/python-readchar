@@ -7,7 +7,7 @@ from readchar import __version__
 
 
 def read_description():
-    with open('README.rst') as fd:
+    with open('README.rst', encoding='utf8') as fd:
         return fd.read()
 
 
