@@ -28,4 +28,3 @@ def readkey(getchar_fn=None):
         if c is None:
             return buffer
         buffer += c
-    return buffer
