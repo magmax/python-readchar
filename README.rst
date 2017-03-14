@@ -29,7 +29,7 @@ Installation
 
    pip install readchar
 
-The :code:`readchar` library is compatible with python 2.6, 2.7, 3.3, 3.4 and 3.5.
+The :code:`readchar` library works with python 2.6, 2.7, 3.3, 3.4, 3.5, 3.6 and Pypy.
 
 Usage
 -----
@@ -57,7 +57,7 @@ Reads the next char from :code:`stdin`, returning it as a string with length 1.
 :code:`readkey()`
 /////////////////
 
-Reads the next key-stroke from :code:`stdin`, returning it as an string.
+Reads the next key-stroke from :code:`stdin`, returning it as a string.
 
 A key-stroke can have:
 
@@ -66,7 +66,7 @@ A key-stroke can have:
 - 3 characters for cursors: ->, <-, ...
 - 4 characters for combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
 
-There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparations and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
+There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparisons and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
 
 
 SO Support
@@ -135,11 +135,11 @@ Licensed under `the MIT license`_.
   :target: `Coveralls`_
   :alt: Coveralls results_
 
-.. |pip version| image:: https://pypip.in/v/readchar/badge.png
+.. |pip version| image:: https://img.shields.io/pypi/v/readchar.svg
     :target: https://pypi.python.org/pypi/readchar
     :alt: Latest PyPI version
 
-.. |pip downloads| image:: https://pypip.in/d/readchar/badge.png
+.. |pip downloads| image:: https://img.shields.io/pypi/dm/readchar.svg
     :target: https://pypi.python.org/pypi/readchar
     :alt: Number of PyPI downloads
 
