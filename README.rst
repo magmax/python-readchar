@@ -57,7 +57,7 @@ Reads the next char from :code:`stdin`, returning it as a string with length 1.
 :code:`readkey()`
 /////////////////
 
-Reads the next key-stroke from :code:`stdin`, returning it as an string.
+Reads the next key-stroke from :code:`stdin`, returning it as a string.
 
 A key-stroke can have:
 
@@ -66,7 +66,7 @@ A key-stroke can have:
 - 3 characters for cursors: ->, <-, ...
 - 4 characters for combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
 
-There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparations and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
+There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparisons and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
 
 
 SO Support
