@@ -11,7 +11,7 @@ def readchar(blocking=False):
     while msvcrt.kbhit():
         msvcrt.getch()
     ch = msvcrt.getch()
-    while ch in '\x00\xe0':
+    while ch.decode() in '\x00\xe0':
         msvcrt.getch()
         ch = msvcrt.getch()
     return ch.decode()
