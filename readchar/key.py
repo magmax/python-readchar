@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
-# This file is based on this gist:
-# http://code.activestate.com/recipes/134892/
-# So real authors are DannyYoo and company.
+
 
 # common
 LF = '\x0d'
 CR = '\x0a'
 ENTER = '\x0d'
 BACKSPACE = '\x7f'
-SUPR = ''
 SPACE = '\x20'
 
 ESC = '\x1b'
