@@ -6,7 +6,7 @@ import msvcrt
 
 
 def readchar(blocking=False):
-    "Get a single character on Windows."
+    """Get a single character on Windows."""
 
     while msvcrt.kbhit():
         msvcrt.getch()

@@ -21,10 +21,13 @@ def readkey(getchar_fn=None):
     if ord(c1) != 0x1b:
         return c1
     c2 = getchar()
-    if ord(c2) != 0x5b:
+    if ord(c2) not in (0x5b, 0x4f):
         return c1 + c2
     c3 = getchar()
-    if ord(c3) != 0x33:
+    if ord(c3) not in (0x31, 0x32, 0x33, 0x35, 0x36):
         return c1 + c2 + c3
     c4 = getchar()
-    return c1 + c2 + c3 + c4
+    if ord(c4) not in (0x30, 0x31, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39):
+        return c1 + c2 + c3 + c4
+    c5 = getchar()
+    return c1 + c2 + c3 + c4 + c5
