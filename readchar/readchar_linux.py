@@ -8,7 +8,6 @@ import tty
 import termios
 
 
-
 def readchar():
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
