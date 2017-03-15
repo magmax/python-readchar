@@ -62,8 +62,6 @@ END = '\x1b\x5b\x46'
 
 INSERT = '\x1b\x5b\x32\x7e'
 
-# what's this?  Why is it defined to '' in above Line 11?
-# why is it the same as DELETE?
 SUPR = '\x1b\x5b\x33\x7e'
 DELETE = '\x1b\x5b\x33\x7e'
 
