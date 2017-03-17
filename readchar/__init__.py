@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-# This file is based on this gist:
+# Copyright (c) 2014 - 2017 Miguel Ángel García (@magmax9).
+# Licensed under the MIT license.
+# This package was inspired this gist:
 # http://code.activestate.com/recipes/134892/
-# So real authors are DannyYoo and company.
+# A debt of gratitute belongs to DannyYoo and company.
 
 from .readchar import readchar, readkey
 from . import key
 
 __all__ = [readchar, readkey, key]
 
-__version__ = '0.0.8'
+__version__ = '0.12.0'

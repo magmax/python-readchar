@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-
+# Copyright (c) 2014 - 2017 Miguel Ángel García (@magmax9).
 
 # common
+TAB = '\x09'
 LF = '\x0d'
 CR = '\x0a'
 ENTER = '\x0d'
@@ -49,9 +50,6 @@ F7 = '\x1b\x5b\x31\x38\x7e'
 F8 = '\x1b\x5b\x31\x39\x7e'
 F9 = '\x1b\x5b\x32\x30\x7e'
 F10 = '\x1b\x5b\x32\x31\x7e'
-
-# we can't get these because the code can't presently tell if the 5th '\x7e'
-# should expect another character or not!
 F11 = '\x1b\x5b\x32\x33\x7e\x1b'
 F12 = '\x1b\x5b\x32\x34\x7e\x08'
 
@@ -64,6 +62,70 @@ INSERT = '\x1b\x5b\x32\x7e'
 
 SUPR = '\x1b\x5b\x33\x7e'
 DELETE = '\x1b\x5b\x33\x7e'
+
+# text names for keys
+KEYS = {
+    CR: 'cr',
+    TAB: 'tab',
+    ENTER: 'enter',
+    BACKSPACE: 'backspace',
+    ESC: 'escape',
+    UP: 'up',
+    RIGHT: 'right',
+    DOWN: 'down',
+    LEFT: 'left',
+    PAGE_UP: 'page_up',
+    PAGE_DOWN: 'page_down',
+    F1: 'f1',
+    F2: 'f2',
+    F3: 'f3',
+    F4: 'f4',
+    F5: 'f5',
+    F6: 'f6',
+    F7: 'f7',
+    F8: 'f8',
+    F9: 'f9',
+    F10: 'f10',
+    DELETE: 'delete',
+    CTRL_A: 'ctrl_a',
+    CTRL_B: 'ctrl_b',
+    CTRL_C: 'ctrl_c',
+    CTRL_D: 'ctrl_d',
+    CTRL_E: 'ctrl_e',
+    CTRL_F: 'ctrl_f',
+    CTRL_Z: 'ctrl_z',
+    INSERT: 'insert',
+    SUPR: 'supr',
+    CTRL_ALT_A: 'ctrl_alt_a'
+}
+
+windows_keys = {
+    '\\x1b': ESC,
+    '\\x85': F11,
+    '\\x86': F12,
+    '\\x08': BACKSPACE,
+    '\\r': ENTER,
+    '\\t': TAB,
+}
+
+windows_special_keys = {
+    # Single keys:
+    'H': UP,
+    'M': RIGHT,
+    'P': DOWN,
+    'K': LEFT,
+    ';': F1,
+    '<': F2,
+    '=': F3,
+    '>': F4,
+    '?': F5,
+    '@': F6,
+    'A': F7,
+    'B': F8,
+    'C': F9,
+    'D': F10,
+    'S': DELETE,
+}
 
 ESCAPE_SEQUENCES = (
     ESC,
@@ -83,9 +145,17 @@ ESCAPE_SEQUENCES = (
     ESC + '\x5b' + '\x32' + '\x32',
     ESC + '\x5b' + '\x32' + '\x33',
     ESC + '\x5b' + '\x32' + '\x34',
+    ESC + '\x5b' + '\x32' + '\x33' + '\x7e',
+    ESC + '\x5b' + '\x32' + '\x34' + '\x7e',
     ESC + '\x4f',
     ESC + ESC,
     ESC + ESC + '\x5b',
     ESC + ESC + '\x5b' + '\x32',
     ESC + ESC + '\x5b' + '\x33',
 )
+
+
+def convertchar(charbuffer):
+    if charbuffer in KEYS:
+        return KEYS[charbuffer]
+    return charbuffer

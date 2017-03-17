@@ -1,33 +1,24 @@
 # -*- coding: utf-8 -*-
-# This file is based on this gist:
-# http://code.activestate.com/recipes/134892/
-# So real authors are DannyYoo and company.
+# Copyright (c) 2014- 2017 Miguel Ángel García (@magmax9).
+# Based on previous work on gist getch()-like unbuffered character
+# reading from stdin on both Windows and Unix (Python recipe),
+# started by Danny Yoo. Licensed under the MIT license.
+
+from __future__ import absolute_import
 import sys
 
 
 if sys.platform.startswith('linux'):
-    from .readchar_linux import readchar
+    from .readchar_linux import readchar, get_char
 elif sys.platform == 'darwin':
-    from .readchar_linux import readchar
+    from .readchar_linux import readchar, get_char
 elif sys.platform in ('win32', 'cygwin'):
-    from .readchar_windows import readchar
+    from .readchar_windows import readchar, get_char
 else:
     raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
 
-def readkey(getchar_fn=None):
+def readkey(getchar_fn=get_char):
     getchar = getchar_fn or readchar
-    c1 = getchar()
-    if ord(c1) != 0x1b:
-        return c1
-    c2 = getchar()
-    if ord(c2) not in (0x5b, 0x4f):
-        return c1 + c2
-    c3 = getchar()
-    if ord(c3) not in (0x31, 0x32, 0x33, 0x35, 0x36):
-        return c1 + c2 + c3
-    c4 = getchar()
-    if ord(c4) not in (0x30, 0x31, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39):
-        return c1 + c2 + c3 + c4
-    c5 = getchar()
-    return c1 + c2 + c3 + c4 + c5
+    charbuffer = getchar()
+    return charbuffer
