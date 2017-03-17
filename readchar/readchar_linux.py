@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-# Initially taken from:
+# This file is based on this gist:
 # http://code.activestate.com/recipes/134892/
-# Thanks to Danny Yoo
+# So real authors are DannyYoo and company.
+
 import sys
 import tty
 import termios
@@ -15,4 +16,8 @@ def readchar():
         ch = sys.stdin.read(1)
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    # useful for debugging and viewing codes
+    # print(ch, ord(ch).__hex__())
+
     return ch
