@@ -14,7 +14,7 @@ from . import key
 
 
 def get_char():
-    charbuffer = ''
+    charbuffer = b''
     while True:
         if charbuffer in key.ESCAPE_SEQUENCES:
             char1 = readchar(False)
@@ -46,9 +46,9 @@ def readchar(blocking=True):
 
     oldflags = fcntl.fcntl(fd, fcntl.F_GETFL)
     fcntl.fcntl(fd, fcntl.F_SETFL, oldflags | os.O_NONBLOCK)
-    c = ''
+    c = b''
     try:
-        while blocking and c == '':
+        while blocking and c == b'':
             try:
                 c = sys.stdin.read(1)
                 break
