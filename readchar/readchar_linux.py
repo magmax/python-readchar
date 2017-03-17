@@ -16,10 +16,10 @@ from . import key
 def get_char():
     charbuffer = b''
     while True:
-        if charbuffer in key.ESCAPE_SEQUENCES:
-            char1 = readchar(False)
-        else:
-            char1 = readchar()
+        # if charbuffer in key.ESCAPE_SEQUENCES:
+        #     char1 = readchar(False)
+        # else:
+        char1 = readchar()
 
         # return if escape sequence is finished (or not an escape sequence).
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
