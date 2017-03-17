@@ -7,14 +7,7 @@ LF = '\x0d'
 CR = '\x0a'
 ENTER = '\x0d'
 BACKSPACE = '\x7f'
-SPACE = '\x20'
-
 ESC = '\x1b'
-
-# Silly, but ESC key cannot be detected by itself, it must be pressed twice
-# pressing the literal "Esc - [ - A" sequence on a (linux, anyway) keyboard
-# is the exact same as pressing UP arrow!
-ESC_KEY = ESC
 
 # CTRL
 CTRL_A = '\x01'
@@ -60,6 +53,8 @@ END = '\x1b\x5b\x46'
 
 INSERT = '\x1b\x5b\x32\x7e'
 
+# SUPR and DELETE are the same key, but for different
+# keyboards (Esp. vs Eng/USA)
 SUPR = '\x1b\x5b\x33\x7e'
 DELETE = '\x1b\x5b\x33\x7e'
 
