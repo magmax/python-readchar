@@ -9,14 +9,35 @@
 
 import msvcrt
 
+from .key import windows_keys, windows_special_keys
 
-def readchar(blocking=False):
-    """Get a single character on Windows."""
 
-    while msvcrt.kbhit():
-        msvcrt.getch()
+def get_char():
+    """Get a linux character representation on Windows.  This
+    representation will, for limited number of characters,
+    be in the standard linux ^[[A type format and can
+    be examined using the (for example) key.UP constant(s).
+    """
     ch = msvcrt.getch()
-    while ch.decode() in '\x00\xe0':
-        msvcrt.getch()
+    if ch in b'\x00\xe0':
         ch = msvcrt.getch()
-    return ch.decode()
+        ch = repr(ch)[2:-1]
+        ch = windows_special_keys.get(ch, ch)
+    else:
+        ch = repr(ch)[2:-1]
+    if str(ch)[0] == '\\' or ch == ' ':
+        ch = windows_keys.get(ch, ch)
+    return ch
+
+
+def readchar(blocking=True):
+    """gets a character or combo on windows and returns a string. If
+    blocking is True then it will catch ctrl+c and not have them end
+    the program. It will also wait for a key to be pressed before
+    continuing on with the loop."""
+
+    if blocking:
+        return get_char()
+    else:
+        if msvcrt.kbhit():
+            return get_char()
