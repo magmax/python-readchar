@@ -1,5 +1,4 @@
 import unittest
-import time
 
 from readchar import readkey
 
@@ -9,7 +8,6 @@ def readchar_fn_factory(stream):
     v = [x for x in stream]
 
     def inner():
-        time.sleep(.05)
         return v.pop(0)
     return inner
 
@@ -32,7 +30,7 @@ class ReadKeyTest(unittest.TestCase):
 
     def test_special_combo_character(self):
         char = '\x1b\x01'
-        getchar_fn = readchar_fn_factory(char)
+        getchar_fn = readchar_fn_factory(char + 'foo')
 
         result = readkey(getchar_fn)
 
