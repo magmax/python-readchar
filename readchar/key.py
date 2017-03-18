@@ -81,7 +81,8 @@ KEYS = {
     F8: 'f8',
     F9: 'f9',
     F10: 'f10',
-    DELETE: 'delete',
+    F11: 'f11',
+    F12: 'f12',
     CTRL_A: 'ctrl_a',
     CTRL_B: 'ctrl_b',
     CTRL_C: 'ctrl_c',
@@ -91,6 +92,7 @@ KEYS = {
     CTRL_Z: 'ctrl_z',
     INSERT: 'insert',
     SUPR: 'supr',
+    DELETE: 'delete',
     CTRL_ALT_A: 'ctrl_alt_a'
 }
 

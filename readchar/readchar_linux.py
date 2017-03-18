@@ -16,17 +16,17 @@ from . import key
 def get_char():
     charbuffer = b''
     while True:
-        # if charbuffer in key.ESCAPE_SEQUENCES:
-        #     char1 = readchar(False)
-        # else:
-        char1 = readchar()
+        if charbuffer in key.ESCAPE_SEQUENCES:
+            char1 = readchar(True)
+        else:
+            char1 = readchar()
 
         # return if escape sequence is finished (or not an escape sequence).
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
             # escape sequence complete or not an escape character..
             return charbuffer + char1
 
-        # handle cases where the escape is finished, but looks incomplete -
+        # handle cases where the steam finished, but looks incomplete -
         # such as a plain old 'ESC' (\x1b) that is not followed by other
         # codes:
         if (charbuffer + char1) == charbuffer:
