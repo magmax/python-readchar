@@ -30,7 +30,7 @@ class ReadKeyTest(unittest.TestCase):
 
     def test_special_combo_character(self):
         char = '\x1b\x01'
-        getchar_fn = readchar_fn_factory(char + 'foo')
+        getchar_fn = readchar_fn_factory(char)
 
         result = readkey(getchar_fn)
 
