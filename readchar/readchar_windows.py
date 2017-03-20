@@ -12,7 +12,7 @@ import msvcrt
 from .key import windows_keys, windows_special_keys
 
 
-def get_char():
+def get_char(test_stream=None):
     """Get a linux character representation on Windows.  This
     representation will, for limited number of characters,
     be in the standard linux ^[[A type format and can
@@ -27,7 +27,7 @@ def get_char():
         ch = repr(ch)[2:-1]
     if str(ch)[0] == '\\' or ch == ' ':
         ch = windows_keys.get(ch, ch)
-    return ch
+    return test_stream or ch
 
 
 def readchar(blocking=True):

@@ -18,7 +18,6 @@ else:
     raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
 
-def readkey(getchar_func=get_char):
-    getchar = getchar_func or readchar
-    charbuffer = getchar()
+def readkey(test_stream=None):
+    charbuffer = get_char(test_stream)
     return charbuffer

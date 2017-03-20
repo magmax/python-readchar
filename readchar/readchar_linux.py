@@ -7,20 +7,19 @@
 
 
 import sys
-import time
 import os
 import termios
 import fcntl
 from . import key
 
 
-def get_char():
+def get_char(test_stream=None):
     charbuffer = ''
     while True:
         if charbuffer in key.ESCAPE_SEQUENCES:
-            char1 = readchar(False)
+            char1 = test_stream or readchar(False)
         else:
-            char1 = readchar()
+            char1 = test_stream or readchar()
 
         # return if escape sequence is finished (or not an escape sequence).
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
