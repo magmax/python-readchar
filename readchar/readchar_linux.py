@@ -17,7 +17,7 @@ def get_char():
     charbuffer = ''
     while True:
         if charbuffer in key.ESCAPE_SEQUENCES:
-            char1 = readchar(True)
+            char1 = readchar(False)
         else:
             char1 = readchar()
 
