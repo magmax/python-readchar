@@ -71,6 +71,8 @@ KEYS = {
     LEFT: 'left',
     PAGE_UP: 'page_up',
     PAGE_DOWN: 'page_down',
+    HOME: 'home',
+    END: 'end',
     F1: 'f1',
     F2: 'f2',
     F3: 'f3',
