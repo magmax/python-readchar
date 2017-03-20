@@ -7,6 +7,7 @@
 
 
 import sys
+import time
 import os
 import termios
 import fcntl
@@ -15,11 +16,14 @@ from . import key
 
 def get_char():
     charbuffer = ''
+    # added a timer so that it will not prematurely return a plain ESC
+    start_read = time.time()
     while True:
         if charbuffer in key.ESCAPE_SEQUENCES:
             char1 = readchar(False)
         else:
             char1 = readchar()
+            start_read = time.time()
 
         # return if escape sequence is finished (or not an escape sequence).
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
@@ -30,7 +34,8 @@ def get_char():
         # such as a plain old 'ESC' (\x1b) that is not followed by other
         # codes:
         if (charbuffer + char1) == charbuffer:
-            return charbuffer
+            if (time.time() - start_read) > .3:
+                return charbuffer
 
         # add character to sequence and continue loop...
         charbuffer += char1
