@@ -34,7 +34,7 @@ def get_char():
         # such as a plain old 'ESC' (\x1b) that is not followed by other
         # codes:
         if (charbuffer + char1) == charbuffer:
-            if (time.time() - start_read) > .3:
+            if (time.time() - start_read) > 1:
                 return charbuffer
 
         # add character to sequence and continue loop...
