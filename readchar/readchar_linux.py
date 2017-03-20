@@ -16,7 +16,7 @@ from . import key
 def get_char(test_stream=None):
     charbuffer = ''
     readstream = readchar
-    
+
     if test_stream:
         def altreader(*args):
             return test_stream()
