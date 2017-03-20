@@ -15,11 +15,18 @@ from . import key
 
 def get_char(test_stream=None):
     charbuffer = ''
+    readstream = readchar
+    
+    if test_stream:
+        def altreader(*args):
+            return test_stream()
+        readstream = altreader
+
     while True:
         if charbuffer in key.ESCAPE_SEQUENCES:
-            char1 = str(test_stream) or readchar(False)
+            char1 = readstream(False)
         else:
-            char1 = str(test_stream) or readchar()
+            char1 = readstream()
 
         # return if escape sequence is finished (or not an escape sequence).
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
