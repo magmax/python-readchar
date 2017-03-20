@@ -28,7 +28,8 @@ def get_char():
         # return if escape sequence is finished (or not an escape sequence).
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
             # escape sequence complete or not an escape character..
-            return charbuffer + char1
+            if (charbuffer + char1) != '\x1b':
+                return charbuffer + char1
 
         # handle cases where the steam finished, but looks incomplete -
         # such as a plain old 'ESC' (\x1b) that is not followed by other
