@@ -19,10 +19,7 @@ def get_char():
     # added a timer so that it will not prematurely return a plain ESC
     #start_read = time.time()
     while True:
-        if charbuffer in key.ESCAPE_SEQUENCES:
-            char1 = readchar(False)
-        else:
-            char1 = readchar()
+        char1 = readchar()
             # start_read = time.time()
 
         # return if escape sequence is finished (or not an escape sequence).
