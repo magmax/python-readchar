@@ -15,7 +15,7 @@ from . import key
 
 def get_char(test_stream=None):
     charbuffer = ''
-    readstream = readchar
+    readstream = read_char
 
     if test_stream:
         def altreader(*args):
@@ -43,7 +43,7 @@ def get_char(test_stream=None):
         charbuffer += char1
 
 
-def readchar(blocking=True):
+def read_char(blocking=True):
     fd = sys.stdin.fileno()
     oldterm = termios.tcgetattr(fd)
 

@@ -30,7 +30,7 @@ def get_char(test_stream=None):
     return test_stream or ch
 
 
-def readchar(blocking=True):
+def read_char(blocking=True):
     """gets a character or combo on windows and returns a string. If
     blocking is True then it will catch ctrl+c and not have them end
     the program. It will also wait for a key to be pressed before

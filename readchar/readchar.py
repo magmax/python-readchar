@@ -8,12 +8,11 @@ from __future__ import absolute_import
 import sys
 
 
-if sys.platform.startswith('linux'):
-    from .readchar_linux import readchar, get_char
-elif sys.platform == 'darwin':
-    from .readchar_linux import readchar, get_char
-elif sys.platform in ('win32', 'cygwin'):
-    from .readchar_windows import readchar, get_char
+platform = sys.platform[0:5]
+if platform in ("linux", "darwi"):
+    from .readchar_linux import get_char, read_char
+elif platform in ('win32', 'cygwin'):
+    from .readchar_windows import get_char, read_char
 else:
     raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
@@ -21,3 +20,7 @@ else:
 def readkey(test_stream=None):
     charbuffer = get_char(test_stream)
     return charbuffer
+
+
+def readchar(blocking=True):
+    return read_char(blocking)
