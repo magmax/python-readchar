@@ -19,6 +19,6 @@ else:
 
 
 def readkey(getchar_func=get_char):
-    getchar = getchar_func #  or readchar
+    getchar = getchar_func or readchar
     charbuffer = getchar()
     return charbuffer
