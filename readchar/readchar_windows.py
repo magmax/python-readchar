@@ -20,7 +20,7 @@ def get_char():
     return ch
 
 
-def readchar(blocking=False):
+def readchar(blocking):
     """gets a character or combo on windows and returns a string.
     If blocking is True then it will catch ctrl+c and not have them end the program.
     It will also wait for a key to be pressed before continuing on with the loop."""

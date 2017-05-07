@@ -5,14 +5,12 @@
 # started by Danny Yoo. Licensed under the MIT license.
 
 import sys
-import os
-import select
 import tty
 import termios
 from . import key
 
 
-def readchar(wait_for_char=True):
+def readchar(blocking):
     old_settings = termios.tcgetattr(sys.stdin)
     tty.setcbreak(sys.stdin.fileno())
     charbuffer = ''
@@ -21,7 +19,7 @@ def readchar(wait_for_char=True):
         if charbuffer in key.ESCAPE_SEQUENCES:
             char1 = getkey(False, old_settings)
         else:
-            char1 = getkey(wait_for_char, old_settings)
+            char1 = getkey(blocking, old_settings)
         if (charbuffer + char1) not in key.ESCAPE_SEQUENCES:
             # escape sequence complete or not an escape character..
             return convertchar(charbuffer + char1)
@@ -35,10 +33,10 @@ def readchar(wait_for_char=True):
         charbuffer += char1
 
 
-def getkey(wait_for_char, old_settings):
+def getkey(blocking, old_settings):
     charbuffer = ''
     try:
-        if wait_for_char or select.select([sys.stdin, ], [], [], 0.0)[0]:
+        if blocking or select.select([sys.stdin, ], [], [], 0.0)[0]:
             char = os.read(sys.stdin.fileno(), 1)
             charbuffer = char if type(char) is str else char.decode()
     except Exception:
