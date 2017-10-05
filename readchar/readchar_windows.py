@@ -3,6 +3,16 @@
 # http://code.activestate.com/recipes/134892/#c9
 # Thanks to Stephen Chappell
 import msvcrt
+import sys
+
+
+win_encoding = 'mbcs'
+
+
+if sys.version_info.major < 3:
+    XE0_OR_00 = unicode('\x00\xe0', win_encoding)
+else:
+    XE0_OR_00 = '\x00\xe0'
 
 
 def readchar(blocking=False):
@@ -11,7 +21,12 @@ def readchar(blocking=False):
     while msvcrt.kbhit():
         msvcrt.getch()
     ch = msvcrt.getch()
-    while ch.decode() in '\x00\xe0':
+    #print('ch={}, type(ch)={}'.format(ch, type(ch)))
+    #while ch.decode(win_encoding) in unicode('\x00\xe0', win_encoding):
+    while ch.decode(win_encoding) in XE0_OR_00:
+        #print('found x00 or xe0')
         msvcrt.getch()
         ch = msvcrt.getch()
-    return ch.decode()
+
+    return ch if sys.version_info.major > 2 else ch.decode(encoding=win_encoding)
+
