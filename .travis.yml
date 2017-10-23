@@ -22,7 +22,7 @@ env:
 install:
   - "if [[ $TMODE == 'test' ]]; then pip install pytest; fi"
   - "if [[ $TMODE == 'test' ]]; then python setup.py install; fi"
-  - pip freeze
+  - pip freeze -a
   - ls -lh .eggs || true
 
 script:
