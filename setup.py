@@ -66,7 +66,6 @@ setup(
     tests_require=[
         'doublex',
         'pexpect',
-        'python-coveralls',
         'coverage',
 
         'pytest',
