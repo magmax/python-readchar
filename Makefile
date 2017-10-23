@@ -13,4 +13,4 @@ coveralls::
 	coveralls
 
 publish:
-	@python setup.py sdist --formats zip,gztar bdist_wheel upload
+	@python setup.py bdist_wheel upload
