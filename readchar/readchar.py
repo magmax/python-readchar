@@ -19,10 +19,10 @@ def readkey(getchar_fn=None):
     if not getchar_fn:
         # read first character from stdin
         c = readchar()
-        ct = ''
+        ct = None
         # keep reading from stdin with NONBLOCK flag until it returns empty
         #  meaning stdin has no more characters stored
-        while ct is not None:
+        while ct != '':
             ct = readchar(NONBLOCK=True)
             c += ct
         return c
