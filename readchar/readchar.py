@@ -16,15 +16,25 @@ else:
 
 
 def readkey(getchar_fn=None):
-    getchar = getchar_fn or readchar
-    c1 = getchar()
-    if ord(c1) != 0x1b:
-        return c1
-    c2 = getchar()
-    if ord(c2) != 0x5b:
-        return c1 + c2
-    c3 = getchar()
-    if ord(c3) != 0x33:
-        return c1 + c2 + c3
-    c4 = getchar()
-    return c1 + c2 + c3 + c4
+    if not getchar_fn:
+        # read first character from stdin
+        c = readchar()
+        ct = ''
+        # keep reading from stdin with NONBLOCK flag until it returns empty
+        #  meaning stdin has no more characters stored
+        while ct is not None:
+            ct = readchar(NONBLOCK=True)
+            c += ct
+        return c
+    else:
+        c1 = getchar_fn()
+        if ord(c1) != 0x1b:
+            return c1
+        c2 = getchar_fn()
+        if ord(c2) != 0x5b:
+            return c1 + c2
+        c3 = getchar_fn()
+        if ord(c3) != 0x33:
+            return c1 + c2 + c3
+        c4 = getchar_fn()
+        return c1 + c2 + c3 + c4

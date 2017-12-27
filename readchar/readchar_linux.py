@@ -5,14 +5,20 @@
 import sys
 import tty
 import termios
+import fcntl
+import os
 
 
-def readchar():
+def readchar(NONBLOCK=False):
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
+    old_flags = fcntl.fcntl(fd, fcntl.F_GETFL)
     try:
-        tty.setraw(sys.stdin.fileno())
+        tty.setraw(fd)
+        if NONBLOCK:
+            fcntl.fcntl(fd, fcntl.F_SETFL, old_flags | os.O_NONBLOCK)
         ch = sys.stdin.read(1)
     finally:
+        fcntl.fcntl(fd, fcntl.F_SETFL, old_flags)
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
