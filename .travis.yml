@@ -3,9 +3,7 @@ language: python
 sudo: false
 
 python:
-  - "2.6"
   - "2.7"
-  - "3.3"
   - "3.4"
   - "3.5"
   - "3.6"
@@ -22,7 +20,7 @@ env:
 install:
   - "if [[ $TMODE == 'test' ]]; then pip install pytest; fi"
   - "if [[ $TMODE == 'test' ]]; then python setup.py install; fi"
-  - pip freeze -a
+  - pip freeze --all
   - ls -lh .eggs || true
 
 script:
