@@ -19,8 +19,9 @@ else:
 
 if sys.platform in ('win32', 'cygwin'):
     #
-    # Windows uses scan codes for extended characters. The ordinal returned is 256 * the scan code.
-    # This dictionary translates scan codes to the unicode sequences expected by readkey.
+    # Windows uses scan codes for extended characters. The ordinal returned is
+    # 256 * the scan code.  This dictionary translates scan codes to the
+    # unicode sequences expected by readkey.
     #
     # for windows scan codes see:
     #   https://msdn.microsoft.com/en-us/library/aa299374
@@ -63,8 +64,9 @@ if sys.platform in ('win32', 'cygwin'):
     }
 
     def readkey(getchar_fn=None):
-        # Get a single character on Windows. if an extended key is pressed, the Windows scan
-        # code is translated into a the unicode sequences readchar expects (see key.py).
+        # Get a single character on Windows. if an extended key is pressed, the
+        # Windows scan code is translated into a the unicode sequences readchar
+        # expects (see key.py).
         while True:
             if msvcrt.kbhit():
                 ch = msvcrt.getch()
