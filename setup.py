@@ -62,7 +62,6 @@ setup(
     zip_safe=False,
     cmdclass={'test': PyTest},
     tests_require=[
-        'doublex',
         'pexpect',
         'coverage',
 
