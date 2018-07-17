@@ -3,4 +3,4 @@ from . import key
 
 __all__ = [readchar, readkey, key]
 
-__version__ = '0.8.0'
+__version__ = '2.0.0'

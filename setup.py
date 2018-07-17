@@ -8,8 +8,11 @@ from readchar import __version__
 
 
 def read_description():
-    with open('README.rst', encoding='utf8') as fd:
-        return fd.read()
+    try:
+        with open('README.rst', encoding='utf8') as fd:
+            return fd.read()
+    except:
+        return "Error found retrieving description"
 
 
 class PyTest(TestCommand):

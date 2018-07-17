@@ -1,5 +1,4 @@
 
-import msvcrt
 import readchar.readchar
 import readchar.key
 
@@ -38,6 +37,6 @@ while True:
     else:
         print(c)
 
-    if c==readchar.key.ESC:
+    if c=='d':
         break
 
