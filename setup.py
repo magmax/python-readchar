@@ -11,7 +11,7 @@ def read_description():
     try:
         with open('README.rst', encoding='utf8') as fd:
             return fd.read()
-    except:
+    except:  # noqa
         return "Error found retrieving description"
 
 

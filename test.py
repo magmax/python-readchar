@@ -28,15 +28,14 @@ decode_dict = {
     readchar.key.F12: 'F12',
     readchar.key.ALT_A: 'ALT_A',
 }
-    
+
 while True:
     c = readchar.readkey()
 
     if c in decode_dict:
-        print ('got {}'.format(decode_dict[c]))
+        print('got {}'.format(decode_dict[c]))
     else:
         print(c)
 
-    if c=='d':
+    if c == 'd':
         break
-
