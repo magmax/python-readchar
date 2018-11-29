@@ -14,7 +14,9 @@ elif sys.platform in ('win32', 'cygwin'):
     from .readchar_windows import readchar
     from . import key
 else:
-    raise NotImplementedError('The platform %s is not supported yet' % sys.platform)
+    raise NotImplementedError(
+        'The platform %s is not supported yet' % sys.platform,
+    )
 
 
 if sys.platform in ('win32', 'cygwin'):
