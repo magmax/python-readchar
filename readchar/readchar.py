@@ -5,19 +5,26 @@
 import sys
 
 
-if sys.platform.startswith('linux'):
-    from .readchar_linux import readchar
-elif sys.platform == 'darwin':
+use_msvcrt = False
+
+if sys.platform.startswith('linux') or sys.platform == 'darwin':
     from .readchar_linux import readchar
 elif sys.platform in ('win32', 'cygwin'):
-    import msvcrt
-    from .readchar_windows import readchar
-    from . import key
+    # Cygwin Terminal can run both Windows and Cygwin builds of Python
+    try:
+        # Only Windows build of Python can load msvcrt
+        import msvcrt
+        from .readchar_windows import readchar
+        from . import key
+        use_msvcrt = True
+    except ImportError:
+        # Cygwin build of Python works just like on Linux
+        from .readchar_linux import readchar
 else:
     raise NotImplemented('The platform %s is not supported yet' % sys.platform)
 
 
-if sys.platform in ('win32', 'cygwin'):
+if use_msvcrt:
     #
     # Windows uses scan codes for extended characters. The ordinal returned is
     # 256 * the scan code.  This dictionary translates scan codes to the
