@@ -82,6 +82,7 @@ if sys.platform in ('win32', 'cygwin'):
                     return x
                 else:
                     return ch.decode()
+            sleep(0.001)
 else:
     def readkey(getchar_fn=None):
         getchar = getchar_fn or readchar
