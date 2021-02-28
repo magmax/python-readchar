@@ -4,20 +4,20 @@
 # So real authors are DannyYoo and company.
 import sys
 
-
-if sys.platform.startswith('linux'):
+if sys.platform.startswith("linux"):
     from .readchar_linux import readchar
-elif sys.platform == 'darwin':
+elif sys.platform == "darwin":
     from .readchar_linux import readchar
-elif sys.platform in ('win32', 'cygwin'):
+elif sys.platform in ("win32", "cygwin"):
     import msvcrt
-    from .readchar_windows import readchar
+
     from . import key
+    from .readchar_windows import readchar
 else:
-    raise NotImplemented('The platform %s is not supported yet' % sys.platform)
+    raise NotImplementedError("The platform %s is not supported yet" % sys.platform)
 
 
-if sys.platform in ('win32', 'cygwin'):
+if sys.platform in ("win32", "cygwin"):
     #
     # Windows uses scan codes for extended characters. The ordinal returned is
     # 256 * the scan code.  This dictionary translates scan codes to the
@@ -42,21 +42,17 @@ if sys.platform in ('win32', 'cygwin'):
         17408: key.F10,
         22272: key.F11,
         34528: key.F12,
-
         7680: key.ALT_A,
-
         # don't have table entries for...
         # CTRL_ALT_A, # Ctrl-Alt-A, etc.
         # CTRL_ALT_SUPR,
         # CTRL-F1
-
         21216: key.INSERT,
-        21472: key.SUPR,    # key.py uses SUPR, not DELETE
+        21472: key.SUPR,  # key.py uses SUPR, not DELETE
         18912: key.PAGE_UP,
         20960: key.PAGE_DOWN,
         18400: key.HOME,
         20448: key.END,
-
         18656: key.UP,
         20704: key.DOWN,
         19424: key.LEFT,
@@ -82,14 +78,17 @@ if sys.platform in ('win32', 'cygwin'):
                     return x
                 else:
                     return ch.decode()
+
+
 else:
+
     def readkey(getchar_fn=None):
         getchar = getchar_fn or readchar
         c1 = getchar()
-        if ord(c1) != 0x1b:
+        if ord(c1) != 0x1B:
             return c1
         c2 = getchar()
-        if ord(c2) != 0x5b:
+        if ord(c2) != 0x5B:
             return c1 + c2
         c3 = getchar()
         if ord(c3) != 0x33:
