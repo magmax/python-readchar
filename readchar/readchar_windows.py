@@ -5,11 +5,10 @@
 import msvcrt
 import sys
 
+win_encoding = "mbcs"
 
-win_encoding = 'mbcs'
 
-
-XE0_OR_00 = '\x00\xe0'
+XE0_OR_00 = "\x00\xe0"
 
 
 def readchar(blocking=False):
@@ -25,8 +24,4 @@ def readchar(blocking=False):
         msvcrt.getch()
         ch = msvcrt.getch()
 
-    return (
-        ch
-        if sys.version_info.major > 2
-        else ch.decode(encoding=win_encoding)
-    )
+    return ch if sys.version_info.major > 2 else ch.decode(encoding=win_encoding)

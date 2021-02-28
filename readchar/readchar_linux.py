@@ -3,8 +3,8 @@
 # http://code.activestate.com/recipes/134892/
 # Thanks to Danny Yoo
 import sys
-import tty
 import termios
+import tty
 
 
 def readchar():
