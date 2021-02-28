@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import sys
 from io import open
 
@@ -7,6 +8,9 @@ from setuptools import find_packages, setup
 from setuptools.command.test import test as TestCommand
 
 version = "2.0.1"
+github_ref = os.getenv("GITHUB_REF")
+if github_ref and github_ref.startswith("refs/tags"):
+    version = github_ref[10:]
 
 
 def read_description():
