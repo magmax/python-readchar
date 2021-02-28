@@ -105,7 +105,7 @@ In order to develop or running the tests, you can do:
 
 .. code:: bash
 
-    pip install -r requirements.txt -r requirements-dev.txt
+    pip install -r requirements-test.txt
 
 5. Run tests
 
