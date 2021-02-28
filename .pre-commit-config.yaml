@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/PyCQA/isort.git
+    rev: 5.6.4
+    hooks:
+    - id: isort
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+    - id: black
+      language_version: python3
+      args:
+        - -l
+        - "90"
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+    - id: name-tests-test
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 39ceae74
+    hooks:
+    - id: flake8
