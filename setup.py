@@ -6,7 +6,7 @@ from io import open
 from setuptools import find_packages, setup
 from setuptools.command.test import test as TestCommand
 
-from readchar import __version__
+version = "2.0.1"
 
 
 def read_description():
@@ -39,7 +39,7 @@ class PyTest(TestCommand):
 
 setup(
     name="readchar",
-    version=__version__,
+    version=version,
     description="Utilities to read single characters and key-strokes",
     long_description=read_description(),
     classifiers=[
