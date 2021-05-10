@@ -69,10 +69,10 @@ A key-stroke can have:
 There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparisons and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
 
 
-SO Support
+OS Support
 ----------
 
-Sadly, this library has only being probed on GNU/Linux. Please, if you can try it in another SO and find a bug, put an issue or send the pull-request.
+Sadly, this library has only being probed on GNU/Linux. Please, if you can try it in another OS and find a bug, put an issue or send the pull-request.
 
 Thank you!
 
@@ -105,7 +105,7 @@ In order to develop or running the tests, you can do:
 
 .. code:: bash
 
-    pip install -r requirements.txt -r requirements-dev.txt
+    pip install -r requirements-test.txt
 
 5. Run tests
 
@@ -120,7 +120,7 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
 License
 =======
 
-Copyright (c) 2014, 2015 Miguel Angel Garcia (`@magmax9`_).
+Copyright (c) 2014-2021 Miguel Angel Garcia (`@magmax_en`_).
 
 Based on previous work on gist `getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe)`_, started by `Danny Yoo`_.
 
@@ -148,7 +148,7 @@ Licensed under `the MIT license`_.
 .. _python-inquirer: https://github.com/magmax/python-inquirer
 .. _Travis: https://travis-ci.org/magmax/python-readchar
 .. _Coveralls: https://coveralls.io/r/magmax/python-readchar
-.. _@magmax9: https://twitter.com/magmax9
+.. _@magmax_en: https://twitter.com/magmax_en
 
 .. _the MIT license: http://opensource.org/licenses/MIT
 .. _getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe): http://code.activestate.com/recipes/134892/
