@@ -83,15 +83,9 @@ if sys.platform in ("win32", "cygwin"):
 else:
 
     def readkey(getchar_fn=None):
+        from . import key
         getchar = getchar_fn or readchar
-        c1 = getchar()
-        if ord(c1) != 0x1B:
-            return c1
-        c2 = getchar()
-        if ord(c2) != 0x5B:
-            return c1 + c2
-        c3 = getchar()
-        if ord(c3) != 0x33:
-            return c1 + c2 + c3
-        c4 = getchar()
-        return c1 + c2 + c3 + c4
+        ch = getchar()
+        while (ch in key.ESCAPE_SEQUENCES):
+            ch += getchar()
+        return ch
