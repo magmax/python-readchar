@@ -10,3 +10,4 @@ venv/
 coverage.xml
 .eggs
 *.egg
+.idea/

@@ -24,4 +24,4 @@ def readchar(blocking=False):
         msvcrt.getch()
         ch = msvcrt.getch()
 
-    return ch if sys.version_info.major > 2 else ch.decode(encoding=win_encoding)
+    return ch.decode() if sys.version_info.major > 2 else ch.decode(encoding=win_encoding)
