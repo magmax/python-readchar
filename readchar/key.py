@@ -2,7 +2,7 @@
 LF = "\x0d"
 CR = "\x0a"
 ENTER = "\x0d"
-BACKSPACE = "\x7f"
+BACKSPACE = "\x08"
 SUPR = ""
 SPACE = "\x20"
 ESC = "\x1b"
