@@ -1,6 +1,6 @@
 # common
-LF = "\x0d"
-CR = "\x0a"
+LF = "\x0a"
+CR = "\x0d"
 ENTER = "\x0d"
 BACKSPACE = "\x08"
 SUPR = ""
