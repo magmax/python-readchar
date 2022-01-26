@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # common
 LF = "\x0a"
 CR = "\x0d"
@@ -6,6 +8,7 @@ BACKSPACE = "\x08"
 SUPR = ""
 SPACE = "\x20"
 ESC = "\x1b"
+TAB = "\x09"
 
 # CTRL
 CTRL_A = "\x01"
