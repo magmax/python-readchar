@@ -53,10 +53,10 @@ if sys.platform in ("win32", "cygwin"):
         20960: key.PAGE_DOWN,
         18400: key.HOME,
         20448: key.END,
-        18432: key.UP,      # 72 * 256
-        20480: key.DOWN,    # 80 * 256
-        19200: key.LEFT,    # 75 * 256
-        19712: key.RIGHT,   # 77 * 256
+        18432: key.UP,  # 72 * 256
+        20480: key.DOWN,  # 80 * 256
+        19200: key.LEFT,  # 75 * 256
+        19712: key.RIGHT,  # 77 * 256
     }
 
     def readkey(getchar_fn=None):
@@ -78,7 +78,6 @@ if sys.platform in ("win32", "cygwin"):
                     return x
                 else:
                     return ch.decode()
-
 
 else:
 
