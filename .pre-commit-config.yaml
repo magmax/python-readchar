@@ -1,4 +1,10 @@
+---
 repos:
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.26.3
+    hooks:
+      - name: check YAML format
+        id: yamllint
   - repo: https://github.com/psf/black
     rev: 22.1.0
     hooks:
