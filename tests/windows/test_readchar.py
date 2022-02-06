@@ -13,7 +13,7 @@ def test_printableCharacters(patched_stdin, c):
     ["seq", "key"],
     [
         ("\n", key.LF),
-        ("\n", key.ENTER),
+        ("\r", key.ENTER),
         ("\r", key.CR),
         ("\x08", key.BACKSPACE),
         ("\x20", key.SPACE),

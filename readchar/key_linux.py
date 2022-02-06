@@ -3,7 +3,7 @@
 # common
 LF = "\x0a"
 CR = "\x0d"
-ENTER = "\x0d"
+ENTER = LF
 BACKSPACE = "\x08"
 SUPR = ""
 SPACE = "\x20"
