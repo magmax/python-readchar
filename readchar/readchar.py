@@ -51,12 +51,12 @@ if sys.platform in ("win32", "cygwin"):
         21472: key.SUPR,  # key.py uses SUPR, not DELETE
         18912: key.PAGE_UP,
         20960: key.PAGE_DOWN,
+        18656: key.UP,      # 224 + (72 * 256)
+        20704: key.DOWN,    # 224 + (80 * 256)
+        19424: key.LEFT,    # 224 + (75 * 256)
+        19936: key.RIGHT,   # 224 + (77 * 256)
         18400: key.HOME,
         20448: key.END,
-        18432: key.UP,  # 72 * 256
-        20480: key.DOWN,  # 80 * 256
-        19200: key.LEFT,  # 75 * 256
-        19712: key.RIGHT,  # 77 * 256
     }
 
     def readkey(getchar_fn=None):
