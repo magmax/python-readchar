@@ -8,7 +8,7 @@ repos:
         id: yamllint
 
   - repo: https://github.com/psf/black
-    rev: 22.1.0
+    rev: 22.3.0
     hooks:
       - name: re-format with black
         id: black
@@ -21,7 +21,7 @@ repos:
         id: trailing-whitespace
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 21d3c70d676007470908d39b73f0521d39b3b997
+    rev: 4.0.1
     hooks:
       - name: check-format with flake8
         id: flake8
