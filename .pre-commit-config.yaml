@@ -19,6 +19,8 @@ repos:
     hooks:
       - name: remove whitespaces
         id: trailing-whitespace
+      - name: add newline to end of files
+        id: end-of-file-fixer
 
   - repo: https://gitlab.com/pycqa/flake8
     rev: 4.0.1
