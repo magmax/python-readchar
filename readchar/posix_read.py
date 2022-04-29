@@ -44,12 +44,16 @@ def readkey():
         return c1
 
     c2 = readchar()
-    if c2 != "\x5B":
+    if c2 not in "\x4F\x5B":
         return c1 + c2
 
     c3 = readchar()
-    if c3 != "\x33":
+    if c3 not in "\x31\x32\x33\x35\x36":
         return c1 + c2 + c3
 
     c4 = readchar()
-    return c1 + c2 + c3 + c4
+    if c2 != "\x4F" or c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+        return c1 + c2 + c3 + c4
+
+    c5 = readchar()
+    return c1 + c2 + c3 + c4 + c5
