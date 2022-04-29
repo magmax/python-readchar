@@ -1,8 +1,9 @@
 extends: default
 
+ignore: |
+  .github/workflows/*
+  venv/*
+
 rules:
-  truthy:
-    ignore: |
-      .github/workflows/*
   indentation:
     spaces: 2
