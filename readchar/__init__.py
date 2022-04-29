@@ -11,4 +11,4 @@ else:
     raise NotImplementedError("The platform %s is not supported yet" % sys.platform)
 
 
-__all__ = [readchar, readkey, key]
+__all__ = ["readchar", "readkey", "key"]
