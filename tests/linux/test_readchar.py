@@ -15,7 +15,7 @@ def test_printableCharacters(patched_stdin, c):
         ("\x0a", key.LF),
         ("\x0a", key.ENTER),
         ("\x0d", key.CR),
-        ("\x08", key.BACKSPACE),
+        ("\x7F", key.BACKSPACE),
         ("\x20", key.SPACE),
         ("\x1b", key.ESC),
         ("\x09", key.TAB),

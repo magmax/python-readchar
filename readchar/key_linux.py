@@ -4,8 +4,7 @@
 LF = "\x0a"
 CR = "\x0d"
 ENTER = LF
-BACKSPACE = "\x08"
-SUPR = ""
+BACKSPACE = "\x7F"
 SPACE = "\x20"
 ESC = "\x1b"
 TAB = "\x09"
