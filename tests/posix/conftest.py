@@ -1,6 +1,10 @@
 import pytest
 import sys
-import select
+
+if sys.platform.startswith("linux"):
+    import termios
+    import tty
+    import readchar.posix_read as linux_read
 
 
 # ignore all tests in this folder if not on linux
@@ -24,11 +28,23 @@ def patched_stdin():
                 string += self.buffer.pop(0)
             return string
 
-    def mock_select(a, b, c, d):
-        return [(sys.stdin)]
+    def mock_tcgetattr(fd):
+        return None
+
+    def mock_tcsetattr(fd, TCSADRAIN, old_settings):
+        return None
+
+    def mock_setraw(fd):
+        return None
+
+    def mock_kbhit():
+        return True
 
     mock = mocked_stdin()
     with pytest.MonkeyPatch.context() as mp:
         mp.setattr(sys.stdin, "read", mock.read)
-        mp.setattr(select, "select", mock_select)
+        mp.setattr(termios, "tcgetattr", mock_tcgetattr)
+        mp.setattr(termios, "tcsetattr", mock_tcsetattr)
+        mp.setattr(tty, "setraw", mock_setraw)
+        mp.setattr(linux_read, "kbhit", mock_kbhit)
         yield mock

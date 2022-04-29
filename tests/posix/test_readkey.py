@@ -2,7 +2,6 @@ import pytest
 from readchar import readkey, key
 
 
-@pytest.mark.skip(reason="These work localy, but not on GitHub...")
 def test_KeyboardInterrupt(patched_stdin):
     patched_stdin.push("\x03")
     with pytest.raises(KeyboardInterrupt):
@@ -14,7 +13,6 @@ def test_singleCharacter(patched_stdin):
     assert "a" == readkey()
 
 
-@pytest.mark.skip(reason="I dont know enough about linux to make these work...")
 @pytest.mark.parametrize(
     ["seq", "key"],
     [
@@ -29,7 +27,6 @@ def test_arrowKeys(seq, key, patched_stdin):
     assert key == readkey()
 
 
-@pytest.mark.skip(reason="I dont know enough about linux to make these work...")
 @pytest.mark.parametrize(
     ["seq", "key"],
     [
@@ -46,7 +43,6 @@ def test_specialKeys(seq, key, patched_stdin):
     assert key == readkey()
 
 
-@pytest.mark.skip(reason="I dont know enough about linux to make these work...")
 @pytest.mark.parametrize(
     ["seq", "key"],
     [
