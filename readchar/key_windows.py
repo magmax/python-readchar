@@ -81,3 +81,4 @@ END = "\x00\x4f"
 
 INSERT = "\x00\x52"
 SUPR = "\x00\x53"
+DELETE = SUPR

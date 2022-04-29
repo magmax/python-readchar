@@ -50,6 +50,7 @@ LEFT = "\x1b\x5b\x44"
 RIGHT = "\x1b\x5b\x43"
 
 CTRL_ALT_SUPR = "\x1b\x5b\x33\x5e"
+CTRL_ALT_DELETE = CTRL_ALT_SUPR
 
 # other
 F1 = "\x1b\x4f\x50"
@@ -72,6 +73,7 @@ END = "\x1b\x5b\x46"
 
 INSERT = "\x1b\x5b\x32\x7e"
 SUPR = "\x1b\x5b\x33\x7e"
+DELETE = SUPR
 
 
 ESCAPE_SEQUENCES = (
