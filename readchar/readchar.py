@@ -69,6 +69,8 @@ if sys.platform in ("win32", "cygwin"):
                         return xlate_dict[b]
                     except KeyError:
                         return None
+                elif a == 8:
+                    return key.BACKSPACE
                 else:
                     return ch.decode()
 
