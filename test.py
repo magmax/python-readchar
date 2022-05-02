@@ -26,6 +26,7 @@ decode_dict = {
     readchar.key.F12: "F12",
     readchar.key.ALT_A: "ALT_A",
     readchar.key.BACKSPACE: "BACKSPACE",
+    readchar.key.ENTER: "ENTER",
 }
 
 while True:

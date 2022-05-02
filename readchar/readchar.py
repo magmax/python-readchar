@@ -71,6 +71,8 @@ if sys.platform in ("win32", "cygwin"):
                         return None
                 elif a == 8:
                     return key.BACKSPACE
+                elif a == 13:
+                    return key.ENTER
                 else:
                     return ch.decode()
 
