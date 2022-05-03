@@ -1,7 +1,7 @@
 from sys import platform
 
 
-if platform.startswith("linux"):
+if platform.startswith("linux") or platform in ("darwin"):
     from .read_linux import readchar, readkey
     from . import key_linux as key
 elif platform in ("win32", "cygwin"):

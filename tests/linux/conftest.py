@@ -1,7 +1,7 @@
 import pytest
 import sys
 
-if sys.platform.startswith("linux"):
+if sys.platform.startswith("linux") or sys.platform in ("darwin"):
     import termios
     import tty
     import readchar.read_linux as read_linux
@@ -9,7 +9,7 @@ if sys.platform.startswith("linux"):
 
 # ignore all tests in this folder if not on linux
 def pytest_ignore_collect(path, config):
-    if not sys.platform.startswith("linux"):
+    if not (sys.platform.startswith("linux") or sys.platform in ("darwin")):
         return True
 
 
