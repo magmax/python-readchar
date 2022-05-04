@@ -52,7 +52,7 @@ def readkey():
         return c1 + c2 + c3
 
     c4 = readchar()
-    if c2 != "\x4F" or c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+    if c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
         return c1 + c2 + c3 + c4
 
     c5 = readchar()
