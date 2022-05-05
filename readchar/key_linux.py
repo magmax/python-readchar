@@ -74,29 +74,3 @@ END = "\x1b\x5b\x46"
 INSERT = "\x1b\x5b\x32\x7e"
 SUPR = "\x1b\x5b\x33\x7e"
 DELETE = SUPR
-
-
-ESCAPE_SEQUENCES = (
-    ESC,
-    ESC + "\x5b",
-    ESC + "\x5b" + "\x31",
-    ESC + "\x5b" + "\x32",
-    ESC + "\x5b" + "\x33",
-    ESC + "\x5b" + "\x35",
-    ESC + "\x5b" + "\x36",
-    ESC + "\x5b" + "\x31" + "\x35",
-    ESC + "\x5b" + "\x31" + "\x36",
-    ESC + "\x5b" + "\x31" + "\x37",
-    ESC + "\x5b" + "\x31" + "\x38",
-    ESC + "\x5b" + "\x31" + "\x39",
-    ESC + "\x5b" + "\x32" + "\x30",
-    ESC + "\x5b" + "\x32" + "\x31",
-    ESC + "\x5b" + "\x32" + "\x32",
-    ESC + "\x5b" + "\x32" + "\x33",
-    ESC + "\x5b" + "\x32" + "\x34",
-    ESC + "\x4f",
-    ESC + ESC,
-    ESC + ESC + "\x5b",
-    ESC + ESC + "\x5b" + "\x32",
-    ESC + ESC + "\x5b" + "\x33",
-)
