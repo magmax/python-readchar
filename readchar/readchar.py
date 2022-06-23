@@ -8,6 +8,8 @@ if sys.platform.startswith("linux"):
     from .readchar_linux import readchar
 elif sys.platform == "darwin":
     from .readchar_linux import readchar
+elif sys.platform.startswith("freebsd"):
+    from .readchar_linux import readchar
 elif sys.platform in ("win32", "cygwin"):
     import msvcrt
 
