@@ -6,3 +6,5 @@ ignore: |
 rules:
   indentation:
     spaces: 2
+  new-lines:
+    type: platform
