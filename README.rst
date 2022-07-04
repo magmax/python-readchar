@@ -93,21 +93,27 @@ In order to develop or running the tests, you can do:
 
 .. code:: bash
 
-   virtualenv venv
+   python -m venv .venv
 
 3. Enter in the virtual environment
 
 .. code:: bash
 
-   source venv/bin/activate
+   source .venv/bin/activate
 
 4. Install dependencies
 
 .. code:: bash
 
-    pip install -r requirements-test.txt
+    pip install -r requirements.txt
 
-5. Run tests
+5. Install the local version of readchar (in edit mode so it automatically reflects changes)
+
+.. code:: bash
+
+    pip install -e .
+
+6. Run tests
 
 .. code:: bash
 

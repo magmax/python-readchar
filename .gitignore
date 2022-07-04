@@ -1,12 +1,20 @@
 *~
 \#*
 \.\#*
+
+# Python Files
+/.venv/
+__pychache__/
 *.pyc
+
+# Build files:
+/build/
+/dist/
 *.egg-info/
-build/
-dist/
-venv/
-.coverage
-coverage.xml
 .eggs
 *.egg
+
+# Testing files:
+/.pytest_cache/
+.coverage
+coverage.xml

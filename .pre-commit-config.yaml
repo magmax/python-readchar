@@ -1,10 +1,12 @@
 ---
 repos:
+
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.27.1
     hooks:
       - name: check YAML format
         id: yamllint
+
   - repo: https://github.com/psf/black
     rev: 22.3.0
     hooks:
@@ -23,8 +25,3 @@ repos:
     hooks:
       - name: check-format with flake8
         id: flake8
-        args:
-          - --show-source
-          - --statistics
-          - --count
-          - --max-complexity=12
