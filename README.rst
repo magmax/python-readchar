@@ -1,15 +1,10 @@
-See it at:
+==========  =============  ===============  =======  ============
+Repository    VERSION        DOWNLOADS        TESTS    COVERAGE
+==========  =============  ===============  =======  ============
+|github|    |pip version|  |pip downloads|  |tests|  |coveralls|
+==========  =============  ===============  =======  ============
 
-- `pypi`_
-- `GitHub`_
-
-==============  ===============  =========  ============
-VERSION         DOWNLOADS        TESTS      COVERAGE
-==============  ===============  =========  ============
-|pip version|   |pip downloads|  |travis|   |coveralls|
-==============  ===============  =========  ============
-
-Library to easily read single chars and key strokes.
+Library to easily read single chars and key-strokes.
 
 Goal and Philosophy
 ===================
@@ -25,7 +20,7 @@ Documentation
 Installation
 ------------
 
-::
+.. code:: bash
 
    pip install readchar
 
@@ -44,37 +39,78 @@ Usage example:
   key = readchar.readkey()
 
 API
-----
+---
 
 There are just two methods:
 
-:code:`readchar()`
-//////////////////
+:code:`readchar(blocking=True) -> str | None`
+/////////////////////////////////////////////
 
 Reads the next char from :code:`stdin`, returning it as a string with length 1.
 
+By default, it will block until a character is available, but if you pass :code:`blocking=False` the function will not block and return :code:`None` if
+no character is available.
 
-:code:`readkey()`
-/////////////////
 
-Reads the next key-stroke from :code:`stdin`, returning it as a string.
+:code:`readkey() -> str`
+////////////////////////
 
-A key-stroke can have:
+Reads the next key-stroke from :code:`stdin`, returning it as a string. Waits until a key-stroke is available.
 
-- 1 character for normal keys: 'a', 'z', '9'...
-- 2 characters for combinations with ALT: ALT+A, ...
-- 3 characters for cursors: ->, <-, ...
-- 4 characters for combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
+A key-stroke can be:
 
-There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparisons and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
+- single characters as returned by :code:`readchar()`. These include:
+
+  - character for normal keys: 'a', 'z', '9'...
+  - special characters like 'ENTER', 'BACKSPACE', 'TAB'...
+  - combinations with CTRL
+
+- keys that are made up of multiple characters:
+
+  - characters for cursors/arrows: 🡩, 🡪, 🡫, 🡨
+  - navigation keys: 'INSERT', 'HOME'...
+  - function keys: 'f1' to 'f12'
+  - for combinations with ALT: ALT+A, ...
+  - combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
+
+.. attention::
+
+  :code:`CTRL+C` will not be returned by :code:`readkey()`, but instead raise a :code:`KeyboardInterupt`. If you what to handle it yourself,
+  use :code:`readchar()`.
+
+
+:code:`key` module
+//////////////////
+
+This submodule contains a list of available keys to compare against. You can use it like this:
+
+.. code:: python
+
+  from readchar import readkey, key
+
+  while True:
+    k = readkey()
+    if k == key.UP:
+      # do stuff
+    if k == key.DOWN:
+      # do stuff
+    if k == key.ENTER:
+      # do stuff
 
 
 OS Support
 ----------
 
-Sadly, this library has only being probed on GNU/Linux. Please, if you can try it in another OS and find a bug, put an issue or send the pull-request.
+This library support both Linux and Windows, but on Windows the :code:`key` submodule has fewer keys available.
 
-Thank you!
+Currently unsupported, but enabled operating systems:
+
+- macOS
+- FreeBSD
+
+Theoretically every Unix based system should work, but they will not be actively tested. It is also required that somebody provides inital testresults
+before the OS is enabled and added to the list.
+
 
 How to contribute
 =================
@@ -126,34 +162,36 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
 License
 =======
 
-Copyright (c) 2014-2021 Miguel Angel Garcia (`@magmax_en`_).
+Copyright (c) 2014-2022 Miguel Angel Garcia (`@magmax_en`_).
 
 Based on previous work on gist `getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe)`_, started by `Danny Yoo`_.
 
 Licensed under `the MIT license`_.
 
 
-.. |travis| image:: https://travis-ci.org/magmax/python-readchar.png
-  :target: `Travis`_
-  :alt: Travis results
-
-.. |coveralls| image:: https://coveralls.io/repos/magmax/python-readchar/badge.png
-  :target: `Coveralls`_
-  :alt: Coveralls results_
+.. |github| image:: https://badges.aleen42.com/src/github.svg
+  :target: `GitHub`_
+  :alt: GitHub Repository
 
 .. |pip version| image:: https://img.shields.io/pypi/v/readchar.svg
-    :target: https://pypi.python.org/pypi/readchar
-    :alt: Latest PyPI version
+  :target: `pypi`_
+  :alt: Latest PyPI version
 
 .. |pip downloads| image:: https://img.shields.io/pypi/dm/readchar.svg
-    :target: https://pypi.python.org/pypi/readchar
-    :alt: Number of PyPI downloads
+  :target: `pypi`_
+  :alt: Number of PyPI downloads
+
+.. |tests| image:: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml/badge.svg
+  :target: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml
+  :alt: Automated testing
+
+.. |coveralls| image:: https://coveralls.io/repos/magmax/python-readchar/badge.png
+  :target: https://coveralls.io/r/magmax/python-readchar
+  :alt: Coveralls results
 
 .. _pypi: https://pypi.python.org/pypi/readchar
 .. _GitHub: https://github.com/magmax/python-readchar
 .. _python-inquirer: https://github.com/magmax/python-inquirer
-.. _Travis: https://travis-ci.org/magmax/python-readchar
-.. _Coveralls: https://coveralls.io/r/magmax/python-readchar
 .. _@magmax_en: https://twitter.com/magmax_en
 
 .. _the MIT license: http://opensource.org/licenses/MIT
