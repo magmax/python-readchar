@@ -9,6 +9,7 @@ from sys import platform
 if (
     platform.startswith("linux")
     or platform == "darwin"
+    or platform.startswith("freebsd")
 ):
     from ._posix_read import readchar, readkey
 elif platform in ("win32", "cygwin"):
