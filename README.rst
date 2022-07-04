@@ -1,38 +1,28 @@
-See it at:
+| |GitHub badge| |PyPi badge| |python versions badge| |licence badge|
+| |test status| |coverage status| |pip downloads badge|
 
-- `pypi`_
-- `GitHub`_
+python-readchar
+***************
 
-==============  ===============  =========  ============
-VERSION         DOWNLOADS        TESTS      COVERAGE
-==============  ===============  =========  ============
-|pip version|   |pip downloads|  |travis|   |coveralls|
-==============  ===============  =========  ============
-
-Library to easily read single chars and key strokes.
-
-Goal and Philosophy
-===================
+Library to easily read single chars and keystrokes.
 
 Born as a `python-inquirer`_ requirement.
 
-The idea is to have a portable way to read **single** characters and **key-strokes**.
-
-
-Documentation
-=============
 
 Installation
-------------
+============
 
-::
+simply install it via :code:`pip`:
+
+.. code:: bash
 
    pip install readchar
 
-The :code:`readchar` library works with python 3.6, 3.7, 3.8, 3.9 and 3.10.
+or download the source code from PyPi_.
+
 
 Usage
------
+=====
 
 Usage example:
 
@@ -44,44 +34,87 @@ Usage example:
   key = readchar.readkey()
 
 API
-----
+===
 
 There are just two methods:
 
-:code:`readchar()`
-//////////////////
+:code:`readchar(blocking=True) -> str | None`
+---------------------------------------------
 
 Reads the next char from :code:`stdin`, returning it as a string with length 1.
 
+By default, it will block until a character is available, but if you pass :code:`blocking=False` the function will not block and return :code:`None`
+if no character is available.
 
-:code:`readkey()`
-/////////////////
 
-Reads the next key-stroke from :code:`stdin`, returning it as a string.
+:code:`readkey() -> str`
+------------------------
 
-A key-stroke can have:
+Reads the next keystroke from :code:`stdin`, returning it as a string. Waits until a keystroke is available.
 
-- 1 character for normal keys: 'a', 'z', '9'...
-- 2 characters for combinations with ALT: ALT+A, ...
-- 3 characters for cursors: ->, <-, ...
-- 4 characters for combinations with CTRL and ALT: CTRL+ALT+SUPR, ...
+A keystroke can be:
 
-There is a list of previously captured chars with their names in :code:`readchar.key`, in order to be used in comparisons and so on. This list is not enough tested and it can have mistakes, so use it carefully. Please, report them if found.
+- single characters as returned by :code:`readchar()`. These include:
+
+  - character for normal keys: 'a', 'Z', '9'...
+  - special characters like 'ENTER', 'BACKSPACE', 'TAB'...
+  - combinations with 'CTRL': 'CTRL'+'A',...
+
+- keys that are made up of multiple characters:
+
+  - characters for cursors/arrows: 🡩, 🡪, 🡫, 🡨
+  - navigation keys: 'INSERT', 'HOME',...
+  - function keys: 'F1' to 'F12'
+  - combinations with 'ALT': 'ALT'+'A',...
+  - combinations with 'CTRL' and 'ALT': 'CTRL'+'ALT'+'SUPR',...
+
+.. attention::
+
+  'CTRL'+'C' will not be returned by :code:`readkey()`, but instead raise a :code:`KeyboardInterupt`. If you what to handle it yourself,
+  use :code:`readchar()`. Also note that using the none-blocking version may result in unexpected behaviour for :code:`KeyboardInterupt`.
+
+
+:code:`key.py` module
+---------------------
+
+This submodule contains a list of available keys to compare against. You can use it like this:
+
+.. code:: python
+
+  from readchar import readkey, key
+
+  while True:
+    k = readkey()
+    if k == key.UP:
+      # do stuff
+    if k == key.DOWN:
+      # do stuff
+    if k == key.ENTER:
+      # do stuff
 
 
 OS Support
-----------
+==========
 
-Sadly, this library has only being probed on GNU/Linux. Please, if you can try it in another OS and find a bug, put an issue or send the pull-request.
+This library support both Linux and Windows, but on Windows the :code:`key` submodule has fewer keys available.
+
+Currently unsupported, but enabled operating systems:
+
+- macOS
+- FreeBSD
+
+Theoretically every Unix based system should work, but they will not be actively tested. It is also required that somebody provides initial test
+results before the OS is enabled and added to the list. Feel free to open a PR for that.
 
 Thank you!
+
 
 How to contribute
 =================
 
-You can download the code, make some changes with their tests, and make a pull-request.
+You can download the code, make some changes with their tests, and open a pull-request.
 
-In order to develop or running the tests, you can do:
+In order to develop and run the tests, follow these steps:
 
 1. Clone the repository.
 
@@ -95,7 +128,7 @@ In order to develop or running the tests, you can do:
 
    python -m venv .venv
 
-3. Enter in the virtual environment
+3. Enter the virtual environment
 
 .. code:: bash
 
@@ -107,7 +140,7 @@ In order to develop or running the tests, you can do:
 
     pip install -r requirements.txt
 
-5. Install the local version of readchar (in edit mode so it automatically reflects changes)
+5. Install the local version of readchar (in edit mode, so it automatically reflects changes)
 
 .. code:: bash
 
@@ -126,36 +159,39 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
 Licence
 =======
 
-Copyright (c) 2014-2021 Miguel Angel Garcia (`@magmax_en`_).
+Copyright (c) 2014-2022 Miguel Angel Garcia (`@magmax_en`_).
 
-Based on previous work on gist `getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe)`_, started by `Danny Yoo`_.
+Based on previous work on gist `getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe)
+<https://code.activestate.com/recipes/134892/>`_, started by Danny Yoo as well as gist
+`kbhit.py <https://gist.github.com/michelbl/efda48b19d3e587685e3441a74457024>`_ by Michel Blancard.
 
-Licensed under `the MIT licence`_.
+Licensed under `the MIT licence <licence_>`_.
 
 
-.. |travis| image:: https://travis-ci.org/magmax/python-readchar.png
-  :target: `Travis`_
-  :alt: Travis results
-
-.. |coveralls| image:: https://coveralls.io/repos/magmax/python-readchar/badge.png
-  :target: `Coveralls`_
-  :alt: Coveralls results_
-
-.. |pip version| image:: https://img.shields.io/pypi/v/readchar.svg
-    :target: https://pypi.python.org/pypi/readchar
+.. |GitHub badge| image:: https://badges.aleen42.com/src/github.svg
+    :target: GitHub_
+    :alt: GitHub Repository
+.. |PyPi badge| image:: https://img.shields.io/pypi/v/readchar.svg
+    :target: PyPi_
     :alt: Latest PyPI version
-
-.. |pip downloads| image:: https://img.shields.io/pypi/dm/readchar.svg
-    :target: https://pypi.python.org/pypi/readchar
+.. |Python versions badge| image:: https://img.shields.io/pypi/pyversions/readchar
+    :target: PyPi_
+    :alt: supported Python versions
+.. |licence badge| image:: https://img.shields.io/pypi/l/readchar?color=blue
+    :target: licence_
+    :alt: Project licence
+.. |test status| image:: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml/badge.svg
+    :target: github.com/magmax/python-readchar/actions/workflows/run-tests.yml?query=branch%3Amaster
+    :alt: Automated testing results
+.. |coverage status| image:: https://coveralls.io/repos/github/magmax/python-readchar/badge.svg?branch=master
+    :target: https://coveralls.io/github/magmax/python-readchar?branch=master
+    :alt: Coveralls results
+.. |pip downloads badge| image:: https://img.shields.io/pypi/dd/readchar.svg
+    :target: PyPi_
     :alt: Number of PyPI downloads
 
-.. _pypi: https://pypi.python.org/pypi/readchar
 .. _GitHub: https://github.com/magmax/python-readchar
+.. _PyPi: https://pypi.python.org/pypi/readchar
+.. _licence: LICENCE
 .. _python-inquirer: https://github.com/magmax/python-inquirer
-.. _Travis: https://travis-ci.org/magmax/python-readchar
-.. _Coveralls: https://coveralls.io/r/magmax/python-readchar
 .. _@magmax_en: https://twitter.com/magmax_en
-
-.. _the MIT licence: http://opensource.org/licenses/MIT
-.. _getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe): http://code.activestate.com/recipes/134892/
-.. _Danny Yoo: http://code.activestate.com/recipes/users/98032/
