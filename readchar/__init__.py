@@ -7,7 +7,10 @@ __all__ = ["readchar", "readkey", "key"]
 from sys import platform
 
 
-if platform.startswith("linux"):
+if (
+    platform.startswith("linux")
+    or platform == "darwin"
+):
     from .posix_read import readchar, readkey
 elif platform in ("win32", "cygwin"):
     from .win_read import readchar, readkey
