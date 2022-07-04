@@ -5,6 +5,7 @@ from . import platform
 if (
     platform.startswith("linux")
     or platform == "darwin"
+    or platform.startswith("freebsd")
 ):
     from .posix_key import *
 elif platform in ("win32", "cygwin"):
