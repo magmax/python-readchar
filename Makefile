@@ -1,10 +1,10 @@
-all: precommit test
+all: test precommit pack
 
 test:
-	python setup.py test
+	@pytest
 
-precommit::
-	pre-commit run -a
+precommit:
+	@pre-commit run -a
 
-publish:
-	@python setup.py bdist_wheel upload
+pack:
+	@python setup.py sdist bdist_wheel
