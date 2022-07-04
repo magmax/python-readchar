@@ -2,7 +2,10 @@
 
 from . import platform
 
-if platform.startswith("linux"):
+if (
+    platform.startswith("linux")
+    or platform == "darwin"
+):
     from ._posix_key import *
 elif platform in ("win32", "cygwin"):
     from ._win_key import *
