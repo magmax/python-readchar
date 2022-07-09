@@ -1,13 +1,13 @@
 import sys
 import termios
-import select
+from select import select
 
 
 # idea from:
 # https://repolinux.wordpress.com/2012/10/09/non-blocking-read-from-stdin-in-python/
 # Thanks to REPOLINUX
-def kbhit():
-    return sys.stdin in select.select([sys.stdin], [], [], 0)[0]
+def _kbhit():
+    return sys.stdin in select([sys.stdin], [], [], 0)[0]
 
 
 # Initially taken from:
@@ -25,7 +25,7 @@ def readchar(blocking=True):
     term[3] &= ~termios.ICANON & ~termios.ECHO & ~termios.IGNBRK & ~termios.BRKINT
     termios.tcsetattr(fd, termios.TCSAFLUSH, term)
 
-    if blocking or kbhit():
+    if blocking or _kbhit():
         ch = sys.stdin.read(1)
 
     termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)

@@ -46,5 +46,5 @@ def patched_stdin():
         mp.setattr(termios, "tcgetattr", mock_tcgetattr)
         mp.setattr(termios, "tcsetattr", mock_tcsetattr)
         mp.setattr(tty, "setraw", mock_setraw)
-        mp.setattr(linux_read, "kbhit", mock_kbhit)
+        mp.setattr(linux_read, "_kbhit", mock_kbhit)
         yield mock
