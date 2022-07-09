@@ -29,7 +29,7 @@ def patched_stdin():
             return string
 
     def mock_tcgetattr(fd):
-        return None
+        return [None, None, None, 0, None, None, None]
 
     def mock_tcsetattr(fd, TCSADRAIN, old_settings):
         return None
