@@ -1,19 +1,24 @@
 import sys
 import termios
-import tty
 
 
 # Initially taken from:
 # http://code.activestate.com/recipes/134892/
 # Thanks to Danny Yoo
+# more infos from:
+# https://gist.github.com/michelbl/efda48b19d3e587685e3441a74457024
+# Thanks to Michel Blancard
 def readchar() -> str:
     """Reads a single character from the input stream.
     Blocks until a character is available."""
 
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
+    term = termios.tcgetattr(fd)
     try:
-        tty.setraw(sys.stdin.fileno())
+        term[3] &= ~(termios.ICANON | termios.ECHO | termios.IGNBRK | termios.BRKINT)
+        termios.tcsetattr(fd, termios.TCSAFLUSH, term)
+
         ch = sys.stdin.read(1)
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)

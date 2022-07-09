@@ -3,7 +3,6 @@ import sys
 
 if sys.platform.startswith("linux"):
     import termios
-    import tty
 
 
 # ignore all tests in this folder if not on linux
@@ -33,13 +32,9 @@ def patched_stdin():
     def mock_tcsetattr(fd, TCSADRAIN, old_settings):
         return None
 
-    def mock_setraw(fd):
-        return None
-
     mock = mocked_stdin()
     with pytest.MonkeyPatch.context() as mp:
         mp.setattr(sys.stdin, "read", mock.read)
         mp.setattr(termios, "tcgetattr", mock_tcgetattr)
         mp.setattr(termios, "tcsetattr", mock_tcsetattr)
-        mp.setattr(tty, "setraw", mock_setraw)
         yield mock
