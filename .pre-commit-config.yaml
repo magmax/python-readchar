@@ -1,17 +1,30 @@
+---
 repos:
-  - repo: https://github.com/PyCQA/isort.git
-    rev: 5.7.0
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.26.3
     hooks:
-    - id: isort
+      - name: check YAML format
+        id: yamllint
   - repo: https://github.com/psf/black
-    rev: 20.8b1
+    rev: 22.1.0
     hooks:
-    - id: black
-      language_version: python3
-      args:
-        - -l
-        - "119"
+      - name: re-format with black
+        id: black
+        language_version: python3
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - name: remove whitespaces
+        id: trailing-whitespace
+
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 6de8252c035844f1e679f509b5f37340b44d5c39
+    rev: 21d3c70d676007470908d39b73f0521d39b3b997
     hooks:
-    - id: flake8
+      - name: check-format with flake8
+        id: flake8
+        args:
+          - --show-source
+          - --statistics
+          - --count
+          - --max-complexity=12
