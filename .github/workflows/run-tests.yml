@@ -70,7 +70,32 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install coveralls
           pip install -e .
       - name: Test with pytest
         run: |
           pytest
+      - name: Coverage upload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_PARALLEL: true
+          COVERALLS_FLAG_NAME: ${{ join(matrix.*, ',') }}
+        run: |
+          coveralls --service=github
+
+  finish-coveralls:
+    needs: pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install coveralls
+      - name: Coverage finish
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        run: |
+          coveralls --service=github --finish
