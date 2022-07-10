@@ -117,14 +117,14 @@ In order to develop or running the tests, you can do:
 Please, **Execute the tests before any pull-request**. This will avoid invalid builds.
 
 
-License
+Licence
 =======
 
 Copyright (c) 2014-2021 Miguel Angel Garcia (`@magmax_en`_).
 
 Based on previous work on gist `getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe)`_, started by `Danny Yoo`_.
 
-Licensed under `the MIT license`_.
+Licensed under `the MIT licence`_.
 
 
 .. |travis| image:: https://travis-ci.org/magmax/python-readchar.png
@@ -150,6 +150,6 @@ Licensed under `the MIT license`_.
 .. _Coveralls: https://coveralls.io/r/magmax/python-readchar
 .. _@magmax_en: https://twitter.com/magmax_en
 
-.. _the MIT license: http://opensource.org/licenses/MIT
+.. _the MIT licence: LICENCE
 .. _getch()-like unbuffered character reading from stdin on both Windows and Unix (Python recipe): http://code.activestate.com/recipes/134892/
 .. _Danny Yoo: http://code.activestate.com/recipes/users/98032/
