@@ -72,7 +72,7 @@ There is a list of previously captured chars with their names in :code:`readchar
 OS Support
 ----------
 
-Sadly, this library has only being probed on GNU/Linux. Please, if you can try it in another OS and find a bug, put an issue or send the pull-request.
+This library supports GNU/Linux and Windows. Please, if you can try it in another OS and find a bug, put an issue or send the pull-request.
 
 Thank you!
 
