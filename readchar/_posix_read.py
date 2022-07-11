@@ -26,6 +26,9 @@ def readkey() -> str:
 
     c1 = readchar()
 
+    if c1 == "\x03":
+        raise KeyboardInterrupt
+
     if c1 != "\x1B":
         return c1
 

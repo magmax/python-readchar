@@ -15,6 +15,9 @@ def readkey() -> str:
 
     ch = readchar()
 
+    if ch == "\x03":
+        raise KeyboardInterrupt
+
     # if it is a normal character:
     if ch not in "\x00\xe0":
         return ch
