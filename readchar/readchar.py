@@ -19,44 +19,40 @@ else:
 
 if sys.platform in ("win32", "cygwin"):
     #
-    # Windows uses scan codes for extended characters. The ordinal returned is
-    # 256 * the scan code.  This dictionary translates scan codes to the
-    # unicode sequences expected by readkey.
+    # Windows uses scan codes for extended characters. This dictionary translates
+    # scan codes to the unicode sequences expected by readkey.
     #
     # for windows scan codes see:
     #   https://msdn.microsoft.com/en-us/library/aa299374
     #      or
     #   http://www.quadibloc.com/comp/scan.htm
     xlate_dict = {
-        13: key.ENTER,
-        27: key.ESC,
-        15104: key.F1,
-        15360: key.F2,
-        15616: key.F3,
-        15872: key.F4,
-        16128: key.F5,
-        16384: key.F6,
-        16640: key.F7,
-        16896: key.F8,
-        17152: key.F9,
-        17408: key.F10,
-        22272: key.F11,
-        34528: key.F12,
-        7680: key.ALT_A,
+        59: key.F1,
+        60: key.F2,
+        61: key.F3,
+        62: key.F4,
+        63: key.F5,
+        64: key.F6,
+        65: key.F7,
+        66: key.F8,
+        67: key.F9,
+        68: key.F10,
+        133: key.F11,
+        134: key.F12,
         # don't have table entries for...
         # CTRL_ALT_A, # Ctrl-Alt-A, etc.
         # CTRL_ALT_SUPR,
-        # CTRL-F1
-        21216: key.INSERT,
-        21472: key.SUPR,  # key.py uses SUPR, not DELETE
-        18912: key.PAGE_UP,
-        20960: key.PAGE_DOWN,
-        18400: key.HOME,
-        20448: key.END,
-        18656: key.UP,
-        20704: key.DOWN,
-        19424: key.LEFT,
-        19936: key.RIGHT,
+        # CTRL_ALT_A, .., etc.
+        82: key.INSERT,
+        83: key.SUPR,  # key.py uses SUPR, not DELETE
+        73: key.PAGE_UP,
+        81: key.PAGE_DOWN,
+        71: key.HOME,
+        79: key.END,
+        72: key.UP,
+        80: key.DOWN,
+        75: key.LEFT,
+        77: key.RIGHT,
     }
 
     def readkey(getchar_fn=None):
@@ -69,13 +65,10 @@ if sys.platform in ("win32", "cygwin"):
                 a = ord(ch)
                 if a == 0 or a == 224:
                     b = ord(msvcrt.getch())
-                    x = a + (b * 256)
-
                     try:
-                        return xlate_dict[x]
+                        return xlate_dict[b]
                     except KeyError:
                         return None
-                    return x
                 else:
                     return ch.decode()
 
