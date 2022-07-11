@@ -1,7 +1,7 @@
 # common
 LF = "\x0a"
 CR = "\x0d"
-ENTER = "\x0d"
+ENTER = CR
 BACKSPACE = "\x08"
 SPACE = "\x20"
 ESC = "\x1b"
@@ -15,12 +15,12 @@ CTRL_D = "\x04"
 CTRL_E = "\x05"
 CTRL_F = "\x06"
 CTRL_G = "\x07"
-CTRL_H = "\x08"
-CTRL_I = "\t"
-CTRL_J = "\n"
+CTRL_H = BACKSPACE
+CTRL_I = TAB
+CTRL_J = LF
 CTRL_K = "\x0b"
 CTRL_L = "\x0c"
-CTRL_M = "\r"
+CTRL_M = CR
 CTRL_N = "\x0e"
 CTRL_O = "\x0f"
 CTRL_P = "\x10"
