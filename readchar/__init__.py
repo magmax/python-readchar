@@ -3,6 +3,12 @@
 __version__ = "4.0.0-dev0"
 __all__ = ["readchar", "readkey", "key"]
 
+from sys import platform
 
-from . import key
-from .readchar import readchar, readkey
+
+if platform.startswith("linux"):
+    from ._posix_read import readchar, readkey
+elif platform in ("win32", "cygwin"):
+    from ._win_read import readchar, readkey
+else:
+    raise NotImplementedError(f"The platform {platform} is not supported yet")
