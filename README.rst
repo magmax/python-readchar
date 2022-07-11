@@ -29,7 +29,7 @@ Installation
 
    pip install readchar
 
-The :code:`readchar` library works with python 2.7, 3.4, 3.5, 3.6 and Pypy.
+The :code:`readchar` library works with python 3.5, 3.6, 3.7, 3.8, 3.9 and 3.10.
 
 Usage
 -----
