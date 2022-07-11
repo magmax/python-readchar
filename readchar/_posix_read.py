@@ -20,16 +20,26 @@ def readchar() -> str:
     return ch
 
 
-def readkey(getchar_fn=None):
-    getchar = getchar_fn or readchar
-    c1 = getchar()
-    if ord(c1) != 0x1B:
+def readkey() -> str:
+    """Get a keypress. If an escaped key is pressed, the full sequence is
+    read and returned as noted in `_posix_key.py`."""
+
+    c1 = readchar()
+
+    if c1 != "\x1B":
         return c1
-    c2 = getchar()
-    if ord(c2) != 0x5B:
+
+    c2 = readchar()
+    if c2 not in "\x4F\x5B":
         return c1 + c2
-    c3 = getchar()
-    if ord(c3) != 0x33:
+
+    c3 = readchar()
+    if c3 not in "\x31\x32\x33\x35\x36":
         return c1 + c2 + c3
-    c4 = getchar()
-    return c1 + c2 + c3 + c4
+
+    c4 = readchar()
+    if c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+        return c1 + c2 + c3 + c4
+
+    c5 = readchar()
+    return c1 + c2 + c3 + c4 + c5
