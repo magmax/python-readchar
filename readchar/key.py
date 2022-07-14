@@ -6,6 +6,8 @@ BACKSPACE = "\x08"
 SUPR = ""
 SPACE = "\x20"
 ESC = "\x1b"
+TAB = "\x09"
+SHIFT_TAB = "\x1b\x5b\x5a"
 
 # CTRL
 CTRL_A = "\x01"
