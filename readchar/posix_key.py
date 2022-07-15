@@ -67,6 +67,9 @@ F12 = "\x1b\x5b\x32\x34\x7e"
 # ALT
 ALT_A = "\x1b\x61"
 
+# SHIFT
+SHIFT_TAB = "\x1b\x5b\x5a"
+
 # CTRL + ALT
 CTRL_ALT_A = "\x1b\x01"
 CTRL_ALT_SUPR = "\x1b\x5b\x33\x5e"
