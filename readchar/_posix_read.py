@@ -2,10 +2,14 @@ import sys
 import termios
 import tty
 
+
 # Initially taken from:
 # http://code.activestate.com/recipes/134892/
 # Thanks to Danny Yoo
-def readchar():
+def readchar() -> str:
+    """Reads a single character from the input stream.
+    Blocks until a character is available."""
+
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
     try:
