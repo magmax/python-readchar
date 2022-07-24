@@ -17,7 +17,7 @@ else:
     raise NotImplementedError("The platform %s is not supported yet" % sys.platform)
 
 
-if sys.platform in ("win32", "cygwin"):
+if sys.platform in ("win32", "cygwin"):  # noqa: C901
     #
     # Windows uses scan codes for extended characters. This dictionary translates
     # scan codes to the unicode sequences expected by readkey.
