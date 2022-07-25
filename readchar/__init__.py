@@ -1,6 +1,6 @@
 """Library to easily read single chars and key strokes"""
 
-__version__ = "4.0.0-dev0"
+__version__ = "4.0.0-dev1"
 __all__ = ["readchar", "readkey", "key"]
 
 from sys import platform
