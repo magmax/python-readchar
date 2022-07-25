@@ -189,7 +189,7 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
     :target: licence_
     :alt: Project licence
 .. |test status| image:: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml/badge.svg?branch=master
-    :target: github.com/magmax/python-readchar/actions/workflows/run-tests.yml?query=branch%3Amaster
+    :target: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml?query=branch%3Amaster
     :alt: Automated testing results
 .. |coverage status| image:: https://coveralls.io/repos/github/magmax/python-readchar/badge.svg?branch=master
     :target: https://coveralls.io/github/magmax/python-readchar?branch=master
