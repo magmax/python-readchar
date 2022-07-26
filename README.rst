@@ -89,10 +89,10 @@ A keystroke can be:
 
 
 :code:`key` module
----------------------
+------------------
 
 This submodule contains a list of available keys to compare against. The constants are defined depending on your operating system, so it should be
-fully portable. If a key is listed here for your platform, :code:`readkey()` can read it and you can compare against it.
+fully portable. If a key is listed here for your platform, :code:`readkey()` can read it, and you can compare against it.
 
 
 OS Support
@@ -165,7 +165,7 @@ In order to develop and run the tests, follow these steps:
 
       make
 
-    (or run the command used inside the Makefile manually, if you don't have/want :code:`make`)
+    (or run the commands used inside the Makefile manually, if you don't have/know :code:`make`)
 
 
 Please, **Execute the tests before any pull-request**. This will avoid invalid builds.
@@ -173,7 +173,7 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
 
 ------
 
-*Copyright (c) 2014-2022 Miguel Angel Garcia*
+*Copyright (c) 2014-2022 Miguel Ángel García*
 
 
 .. |GitHub badge| image:: https://badges.aleen42.com/src/github.svg
@@ -186,7 +186,7 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
     :target: PyPi_
     :alt: supported Python versions
 .. |licence badge| image:: https://img.shields.io/pypi/l/readchar?color=blue
-    :target: licence_
+    :target: LICENCE_
     :alt: Project licence
 .. |test status| image:: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml/badge.svg?branch=master
     :target: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml?query=branch%3Amaster
@@ -200,5 +200,5 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
 
 .. _GitHub: https://github.com/magmax/python-readchar
 .. _PyPi: https://pypi.python.org/pypi/readchar
-.. _licence: LICENCE
+.. _LICENCE: LICENCE
 .. _python-inquirer: https://github.com/magmax/python-inquirer
