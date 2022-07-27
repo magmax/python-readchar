@@ -6,11 +6,7 @@ __all__ = ["readchar", "readkey", "key"]
 from sys import platform
 
 
-if (
-    platform.startswith("linux")
-    or platform == "darwin"
-    or platform.startswith("freebsd")
-):
+if platform.startswith(("linux", "darwin", "freebsd")):
     from ._posix_read import readchar, readkey
 elif platform in ("win32", "cygwin"):
     from ._win_read import readchar, readkey

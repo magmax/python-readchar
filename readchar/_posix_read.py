@@ -19,7 +19,10 @@ def readchar() -> str:
         term[3] &= ~(termios.ICANON | termios.ECHO | termios.IGNBRK | termios.BRKINT)
         termios.tcsetattr(fd, termios.TCSAFLUSH, term)
 
-        ch = sys.stdin.read(1)
+        if sys.platform == "darwin":
+            ch = sys.stdin.readline(1)
+        else:
+            ch = sys.stdin.read(1)
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch

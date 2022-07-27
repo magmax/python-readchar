@@ -2,12 +2,11 @@
 
 from . import platform
 
-if (
-    platform.startswith("linux")
-    or platform == "darwin"
-    or platform.startswith("freebsd")
-):
+if platform.startswith(("linux", "freebsd")):
     from ._posix_key import *
+elif platform.startswith("darwin"):
+    from ._posix_key import *
+    from ._macos_key import *
 elif platform in ("win32", "cygwin"):
     from ._win_key import *
 else:
