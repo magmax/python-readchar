@@ -12,7 +12,9 @@ if (
     or platform.startswith("freebsd")
 ):
     from ._posix_read import readchar, readkey
+    from . import _posix_key as key
 elif platform in ("win32", "cygwin"):
     from ._win_read import readchar, readkey
+    from . import _win_key as key
 else:
     raise NotImplementedError(f"The platform {platform} is not supported yet")
