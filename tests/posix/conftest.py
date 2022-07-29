@@ -1,13 +1,15 @@
 import pytest
 import sys
 
-if sys.platform.startswith("linux"):
+unix_like = sys.platform.startswith("linux") or "bsd" in sys.platform
+
+if unix_like:
     import termios
 
 
-# ignore all tests in this folder if not on linux
+# ignore all tests in this folder if not on a Unix-like platform
 def pytest_ignore_collect(path, config):
-    if not sys.platform.startswith("linux"):
+    if not unix_like:
         return True
 
 
