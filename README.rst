@@ -117,58 +117,10 @@ Thank you!
 How to contribute
 =================
 
-You can download the code, make some changes with their tests, and open a pull-request.
+You have an issue problem or found a bug? You have a great new idea or just want to fix a typo? Great :+1:. We are happy to accept your issue or pull
+request, but first, please read our `contribution guidelines <CONTRIBUTING_>`_. They will also tell you how to write code for this repo and
+how to properly prepare an issue or a pull request.
 
-In order to develop and run the tests, follow these steps:
-
-1.  Clone the repository.
-
-    .. code:: bash
-
-      git clone https://github.com/magmax/python-readchar.git
-
-2.  Create a virtual environment:
-
-    .. code:: bash
-
-      python -m venv .venv
-
-3.  Enter the virtual environment
-
-    on Linux systems:
-
-    .. code:: bash
-
-      source .venv/bin/activate
-
-    or for Windows systems:
-
-    .. code:: bash
-
-      .venv\Scripts\activate
-
-4.  Install dependencies
-
-    .. code:: bash
-
-      pip install -r requirements.txt
-
-5.  Install the local version of readchar (in edit mode, so it automatically reflects changes)
-
-    .. code:: bash
-
-      pip install -e .
-
-6.  Run tests
-
-    .. code:: bash
-
-      make
-
-    (or run the commands used inside the Makefile manually, if you don't have/know :code:`make`)
-
-
-Please, **Execute the tests before any pull-request**. This will avoid invalid builds.
 
 
 ------
@@ -201,4 +153,5 @@ Please, **Execute the tests before any pull-request**. This will avoid invalid b
 .. _GitHub: https://github.com/magmax/python-readchar
 .. _PyPi: https://pypi.python.org/pypi/readchar
 .. _LICENCE: LICENCE
+.. _CONTRIBUTING: https://github.com/magmax/python-readchar/blob/master/CONTRIBUTING.md
 .. _python-inquirer: https://github.com/magmax/python-inquirer
