@@ -1,13 +1,6 @@
 ---
 repos:
 
-  - repo: https://github.com/psf/black
-    rev: 22.6.0
-    hooks:
-      - name: re-format with black
-        id: black
-        language_version: python3
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
@@ -15,6 +8,13 @@ repos:
         id: trailing-whitespace
       - name: add newline to end of files
         id: end-of-file-fixer
+
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+      - name: re-format with black
+        id: black
+        language_version: python3
 
   - repo: https://github.com/pycqa/flake8
     rev: 4.0.1
