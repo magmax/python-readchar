@@ -1,4 +1,4 @@
-wheel
 pre-commit
 pytest
 pytest-cov
+wheel
