@@ -30,6 +30,13 @@ repos:
       - name: check syntax with flake8
         id: flake8
 
+  - repo: https://github.com/asottile/setup-cfg-fmt
+    rev: v2.0.0
+    hooks:
+      - name: format setup.cfg
+        id: setup-cfg-fmt
+        args: [--include-version-classifiers]
+
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.27.1
     hooks:
