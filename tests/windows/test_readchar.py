@@ -1,6 +1,8 @@
-import pytest
 from string import printable
-from readchar import readchar, key
+
+import pytest
+
+from readchar import key, readchar
 
 
 @pytest.mark.parametrize("c", printable)

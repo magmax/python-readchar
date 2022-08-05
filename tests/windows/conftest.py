@@ -1,5 +1,6 @@
-import pytest
 import sys
+
+import pytest
 
 
 if sys.platform in ("win32", "cygwin"):

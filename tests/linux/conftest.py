@@ -1,5 +1,7 @@
-import pytest
 import sys
+
+import pytest
+
 
 if sys.platform.startswith("linux"):
     import termios

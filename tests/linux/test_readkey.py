@@ -1,5 +1,6 @@
 import pytest
-from readchar import readkey, key
+
+from readchar import key, readkey
 
 
 @pytest.mark.parametrize("key", ["\x03", key.CTRL_C])

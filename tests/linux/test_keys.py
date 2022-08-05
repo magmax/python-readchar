@@ -1,4 +1,5 @@
 import pytest
+
 from readchar import key as keys
 
 
