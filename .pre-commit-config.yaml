@@ -25,9 +25,9 @@ repos:
         language_version: python3
 
   - repo: https://github.com/pycqa/flake8
-    rev: 4.0.1
+    rev: 5.0.4
     hooks:
-      - name: check-format with flake8
+      - name: check syntax with flake8
         id: flake8
 
   - repo: https://github.com/adrienverge/yamllint
