@@ -4,11 +4,11 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
-      - name: remove whitespaces
+      - name: remove trailing whitespace
         id: trailing-whitespace
       - name: add newline to end of files
         id: end-of-file-fixer
-      - name: sort requiremtns.txt
+      - name: sort requirements.txt
         id: requirements-txt-fixer
 
   - repo: https://github.com/pycqa/isort
@@ -40,5 +40,5 @@ repos:
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.27.1
     hooks:
-      - name: check YAML format
+      - name: check YAML syntax
         id: yamllint
