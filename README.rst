@@ -140,8 +140,8 @@ how to properly prepare an issue or a pull request.
 .. |licence badge| image:: https://img.shields.io/pypi/l/readchar?color=blue
     :target: LICENCE_
     :alt: Project licence
-.. |test status| image:: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml/badge.svg?branch=master
-    :target: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yml?query=branch%3Amaster
+.. |test status| image:: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yaml/badge.svg?branch=master
+    :target: https://github.com/magmax/python-readchar/actions/workflows/run-tests.yaml?query=branch%3Amaster
     :alt: Automated testing results
 .. |coverage status| image:: https://coveralls.io/repos/github/magmax/python-readchar/badge.svg?branch=master
     :target: https://coveralls.io/github/magmax/python-readchar?branch=master
