@@ -53,6 +53,7 @@ RIGHT = "\x00\x4d"
 # navigation keys
 INSERT = "\x00\x52"
 SUPR = "\x00\x53"
+DELETE = SUPR
 HOME = "\x00\x47"
 END = "\x00\x4f"
 PAGE_UP = "\x00\x49"

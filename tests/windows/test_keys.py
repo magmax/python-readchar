@@ -47,6 +47,7 @@ def test_defaultKeysLength(key):
 specialKeys = [
     "INSERT",
     "SUPR",
+    "DELETE",
     "PAGE_UP",
     "PAGE_DOWN",
     "HOME",

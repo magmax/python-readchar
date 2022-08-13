@@ -57,7 +57,7 @@ def test_character_length_3_lenght(key):
     assert 3 == len(keys.__dict__[key])
 
 
-len4_keys = ["INSERT", "SUPR", "PAGE_UP", "PAGE_DOWN"]
+len4_keys = ["INSERT", "SUPR", "DELETE", "PAGE_UP", "PAGE_DOWN"]
 
 
 @pytest.mark.parametrize("key", len4_keys)
