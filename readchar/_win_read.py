@@ -1,5 +1,7 @@
 import msvcrt
 
+from ._config import config
+
 
 def readchar() -> str:
     """Reads a single character from the input stream.
@@ -15,7 +17,7 @@ def readkey() -> str:
 
     ch = readchar()
 
-    if ch == "\x03":
+    if ch in config.INTERRUPT_KEYS:
         raise KeyboardInterrupt
 
     # if it is a normal character:
