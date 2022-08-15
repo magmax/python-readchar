@@ -1,9 +1,11 @@
 """Library to easily read single chars and key strokes"""
 
 __version__ = "4.0.2-dev0"
-__all__ = ["readchar", "readkey", "key"]
+__all__ = ["readchar", "readkey", "key", "config"]
 
 from sys import platform
+
+from ._config import config
 
 
 if platform.startswith(("linux", "darwin", "freebsd")):

@@ -86,6 +86,21 @@ A keystroke can be:
 This submodule contains a list of available keys to compare against. The constants are defined depending on your operating system, so it should be
 fully portable. If a key is listed here for your platform, `readkey()` can read it, and you can compare against it.
 
+### `readchar.config` class
+
+This class contains configurations for `readchar`. It holds constants that are used in other parts of the code. You can override/change these to
+modify its behaviour. Here is a description of the existing attributes:
+
+<dl>
+<dt><code>INTERRUPT_KEYS</code></dt>
+<dd>
+
+List of keys that will result in `readkey()` raising a `KeyboardInterrupt`. <br>
+*Default:* `[key.CTRL_C]`
+
+</dd>
+</dl>
+
 
 ## OS Support
 

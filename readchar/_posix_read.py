@@ -1,6 +1,8 @@
 import sys
 import termios
 
+from ._config import config
+
 
 # Initially taken from:
 # http://code.activestate.com/recipes/134892/
@@ -31,7 +33,7 @@ def readkey() -> str:
 
     c1 = readchar()
 
-    if c1 == "\x03":
+    if c1 in config.INTERRUPT_KEYS:
         raise KeyboardInterrupt
 
     if c1 != "\x1B":
