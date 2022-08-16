@@ -54,13 +54,13 @@ while True:
 
 There are just two methods:
 
-### `readchar() -> str`
+### `readchar.readchar() -> str`
 
 Reads one character from `stdin`, returning it as a string with length 1. Waits until a character is available.
 
 As only ASCII characters are actually a single character, you usually want to use the next function, that also handles longer keys.
 
-### `readkey() -> str`
+### `readchar.readkey() -> str`
 
 Reads the next keystroke from `stdin`, returning it as a string. Waits
 until a keystroke is available.
