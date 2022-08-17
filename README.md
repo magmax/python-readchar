@@ -88,8 +88,8 @@ fully portable. If a key is listed here for your platform, `readkey()` can read 
 
 ### `readchar.config` class
 
-This class contains configurations for `readchar`. It holds constants that are used in other parts of the code. You can override/change these to
-modify its behaviour. Here is a description of the existing attributes:
+This static class contains configurations for `readchar`. It holds constants that are used in other parts of the code as class attributes. You can
+override/change these to modify its behaviour. Here is a description of the existing attributes:
 
 <dl>
 <dt><code>INTERRUPT_KEYS</code></dt>
