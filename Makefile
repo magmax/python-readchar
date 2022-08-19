@@ -1,10 +1,14 @@
-all: test precommit pack
+.PHONY: tests build readchar
 
-test:
+
+# default target:
+all: tests pre-commit build
+
+test tests:
 	@pytest
 
-precommit:
+pre-commit precommit:
 	@pre-commit run -a
 
-pack:
+build pack readchar:
 	@python setup.py sdist bdist_wheel
