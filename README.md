@@ -1,10 +1,10 @@
 [![GitHub Repository](https://badges.aleen42.com/src/github.svg)](https://github.com/magmax/python-readchar)
-[![Latest PyPI version](https://img.shields.io/pypi/v/readchar.svg)](https://pypi.python.org/pypi/readchar)
+[![Latest PyPi version](https://img.shields.io/pypi/v/readchar.svg)](https://pypi.python.org/pypi/readchar)
 [![supported Python versions](https://img.shields.io/pypi/pyversions/readchar)](https://pypi.python.org/pypi/readchar)
 [![Project licence](https://img.shields.io/pypi/l/readchar?color=blue)](LICENCE) <br>
 [![Automated testing results](https://github.com/magmax/python-readchar/actions/workflows/run-tests.yaml/badge.svg?branch=master)](https://github.com/magmax/python-readchar/actions/workflows/run-tests.yaml?query=branch%3Amaster)
 [![Coveralls results](https://coveralls.io/repos/github/magmax/python-readchar/badge.svg?branch=master)](https://coveralls.io/github/magmax/python-readchar?branch=master)
-[![Number of PyPI downloads](https://img.shields.io/pypi/dd/readchar.svg)](https://pypi.python.org/pypi/readchar)
+[![Number of PyPi downloads](https://img.shields.io/pypi/dd/readchar.svg)](https://pypi.python.org/pypi/readchar)
 
 # python-readchar
 
