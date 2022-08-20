@@ -37,6 +37,14 @@ repos:
         id: setup-cfg-fmt
         args: [--include-version-classifiers]
 
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.15
+    hooks:
+      - id: mdformat
+        args: [--wrap=88]
+        additional_dependencies:
+          - mdformat-gfm
+
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.27.1
     hooks:

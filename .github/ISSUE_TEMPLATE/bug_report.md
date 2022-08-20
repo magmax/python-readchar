@@ -1,11 +1,9 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: bug
+______________________________________________________________________
+
+name: Bug report about: Create a report to help us improve title: '' labels: bug
 assignees: ''
 
----
+______________________________________________________________________
 
 ## Describe the bug
 
@@ -16,8 +14,8 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behaviour:
 
 1. Use this code '...'
-2. Do the following '....'
-3. See error
+1. Do the following '....'
+1. See error
 
 ## Expected behaviour
 
@@ -29,9 +27,9 @@ If applicable, add screenshots to help explain your problem.
 
 ## Environment (please complete the following information)
 
-- OS: [e.g. Linux / Windows / macOS / etc.]
-- python version: [get by running: `python --version`]
-- readchar version: [get by running: `pip show readchar`]
+- OS: \[e.g. Linux / Windows / macOS / etc.\]
+- python version: \[get by running: `python --version`\]
+- readchar version: \[get by running: `pip show readchar`\]
 
 ## Additional context
 
