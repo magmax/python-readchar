@@ -20,14 +20,14 @@ repos:
   - repo: https://github.com/psf/black
     rev: 22.6.0
     hooks:
-      - name: re-format with black
+      - name: format python files
         id: black
         language_version: python3
 
   - repo: https://github.com/pycqa/flake8
     rev: 5.0.4
     hooks:
-      - name: check syntax with flake8
+      - name: check python syntax
         id: flake8
 
   - repo: https://github.com/asottile/setup-cfg-fmt
@@ -40,7 +40,8 @@ repos:
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.15
     hooks:
-      - id: mdformat
+      - name: format Markdown files
+        id: mdformat
         args: [--wrap=88]
         additional_dependencies:
           - mdformat-gfm
@@ -48,5 +49,5 @@ repos:
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.27.1
     hooks:
-      - name: check YAML syntax
+      - name: check YAML syntax + format
         id: yamllint
