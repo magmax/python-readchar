@@ -38,11 +38,13 @@ repos:
         args: [--include-version-classifiers]
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.15
+    rev: 0.7.16
     hooks:
       - name: format Markdown files
         id: mdformat
-        args: [--wrap=88]
+        args:
+          - --wrap=88
+          - --end-of-line=keep
         additional_dependencies:
           - mdformat-gfm
 
