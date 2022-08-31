@@ -1,4 +1,4 @@
-[![GitHub Repository](https://badges.aleen42.com/src/github.svg)](https://github.com/magmax/python-readchar)
+[![GitHub Repository](https://img.shields.io/badge/-GitHub-%230D0D0D?logo=github&labelColor=gray)](https://github.com/magmax/python-readchar)
 [![Latest PyPi version](https://img.shields.io/pypi/v/readchar.svg)](https://pypi.python.org/pypi/readchar)
 [![supported Python versions](https://img.shields.io/pypi/pyversions/readchar)](https://pypi.python.org/pypi/readchar)
 [![Project licence](https://img.shields.io/pypi/l/readchar?color=blue)](LICENCE) <br>
