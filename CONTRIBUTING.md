@@ -75,17 +75,10 @@ steps.
    .venv\Scripts\activate
    ```
 
-1. Install dependencies
+1. Install dev-dependencies (this also automatically installs the library in editable mode)
 
    ```bash
    pip install -r requirements.txt
-   ```
-
-1. Install the local version of readchar (in edit mode, so it automatically reflects
-   changes)
-
-   ```bash
-   pip install -e .
    ```
 
 ### Run the tests!
