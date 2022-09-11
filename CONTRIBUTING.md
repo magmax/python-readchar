@@ -75,7 +75,8 @@ steps.
    .venv\Scripts\activate
    ```
 
-1. Install dev-dependencies (this also automatically installs the library in editable mode)
+1. Install dev-dependencies (this also automatically installs the library in editable
+   mode)
 
    ```bash
    pip install -r requirements.txt
