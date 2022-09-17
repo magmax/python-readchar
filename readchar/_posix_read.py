@@ -1,5 +1,7 @@
 import sys
 import termios
+from copy import copy
+from select import select
 
 from ._config import config
 
@@ -12,28 +14,53 @@ class ReadChar:
         self.config = cfg if cfg is not None else config
 
     def __enter__(self) -> "ReadChar":
-        raise NotImplementedError("ToDo")
+        self.fd = sys.stdin.fileno()
+        term = termios.tcgetattr(self.fd)
+        self.old_settings = copy(term)
+        term[3] &= ~(termios.ICANON | termios.ECHO | termios.IGNBRK | termios.BRKINT)
+        termios.tcsetattr(self.fd, termios.TCSAFLUSH, term)
         return self
 
     def __exit__(self, type, value, traceback) -> None:
-        raise NotImplementedError("ToDo")
+        termios.tcsetattr(self.fd, termios.TCSADRAIN, self.old_settings)
 
     @property
     def key_waiting(self) -> bool:
         """True if a key has been pressed and is waiting to be read. False if not."""
-        raise NotImplementedError("ToDo")
+        return sys.stdin in select([sys.stdin], [], [], 0)[0]
 
     def char(self) -> str:
         """Reads a singel char from the input stream and returns it as a string of
         length one. Does not require the user to press ENTER."""
-        raise NotImplementedError("ToDo")
+        return sys.stdin.read(1)
 
     def key(self) -> str:
         """Reads a keypress from the input stream and returns it as a string. Keypressed
         consisting of multiple characterrs will be read completly and be returned as a
         string matching the definitions in `key.py`.
         Does not require the user to press ENTER."""
-        raise NotImplementedError("ToDo")
+        c1 = self.char()
+
+        if c1 in self.config.INTERRUPT_KEYS:
+            raise KeyboardInterrupt
+
+        if c1 != "\x1B":
+            return c1
+
+        c2 = self.char()
+        if c2 not in "\x4F\x5B":
+            return c1 + c2
+
+        c3 = self.char()
+        if c3 not in "\x31\x32\x33\x35\x36":
+            return c1 + c2 + c3
+
+        c4 = self.char()
+        if c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+            return c1 + c2 + c3 + c4
+
+        c5 = self.char()
+        return c1 + c2 + c3 + c4 + c5
 
 
 # Initially taken from:
