@@ -4,6 +4,38 @@ import termios
 from ._config import config
 
 
+class ReadChar:
+    """A ContextManager allowing for keypress collection without requiering the user to
+    confirm presses with ENTER. Can be used non-blocking while inside the context."""
+
+    def __init__(self, cfg: config = None) -> None:
+        self.config = cfg if cfg is not None else config
+
+    def __enter__(self) -> "ReadChar":
+        raise NotImplementedError("ToDo")
+        return self
+
+    def __exit__(self, type, value, traceback) -> None:
+        raise NotImplementedError("ToDo")
+
+    @property
+    def key_waiting(self) -> bool:
+        """True if a key has been pressed and is waiting to be read. False if not."""
+        raise NotImplementedError("ToDo")
+
+    def char(self) -> str:
+        """Reads a singel char from the input stream and returns it as a string of
+        length one. Does not require the user to press ENTER."""
+        raise NotImplementedError("ToDo")
+
+    def key(self) -> str:
+        """Reads a keypress from the input stream and returns it as a string. Keypressed
+        consisting of multiple characterrs will be read completly and be returned as a
+        string matching the definitions in `key.py`.
+        Does not require the user to press ENTER."""
+        raise NotImplementedError("ToDo")
+
+
 # Initially taken from:
 # http://code.activestate.com/recipes/134892/
 # Thanks to Danny Yoo
