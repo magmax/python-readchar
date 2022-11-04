@@ -20,18 +20,19 @@ Fill out the template. You should at least provide the following information:
 - Information about your system:
   - your OS
   - your Python version and implementation
-  - the version of readchar you use
+  - the version of `readchar` you use
 
 ## Opening a pull request
 
 Follow these steps if you want to contribute code to the project:
 
-1. Fork this Git repository and create your branch from `master`.
+1. [Fork](https://github.com/magmax/python-readchar/fork) this Git repository and create
+   your branch from `master`.
 
 1. Check out the code to your local machine by following the steps in
    [Getting the code](#getting-the-code) and make your changes.
 
-1. **Make sure the tests pass!!**
+1. **Make sure [the tests pass](#run-the-tests)!!**
 
 1. If you added to the source code, add tests for your new code.
 
@@ -49,10 +50,11 @@ Follow these steps if you want to contribute code to the project:
 If you want to experiment with the code yourself, you can get started by following these
 steps.
 
-1. Clone the repository.
+1. Clone the repository. (or yours if you created a fork)
 
    ```bash
    git clone https://github.com/magmax/python-readchar.git
+   cd python-readchar
    ```
 
 1. Create a virtual environment:
@@ -87,7 +89,7 @@ steps.
 Always make sure all tests pass before suggesting any changes! This will avoid invalid
 PR's.
 
-The simplest way is to just run `make`. The provided makefile calls all tests for you.
+The simplest way is to just run `make`. The provided Makefile calls all tests for you.
 
 ```bash
 make

@@ -32,7 +32,7 @@ import readchar
 key = readchar.readkey()
 ```
 
-React to different kinds of keypresses:
+React to different kinds of key-presses:
 
 ```python
 from readchar import readkey, key
