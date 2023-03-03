@@ -2,7 +2,7 @@
 repos:
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - name: remove trailing whitespace
         id: trailing-whitespace
@@ -18,20 +18,20 @@ repos:
         id: isort
 
   - repo: https://github.com/psf/black
-    rev: 22.6.0
+    rev: 23.1.0
     hooks:
       - name: format python files
         id: black
         language_version: python3
 
   - repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
+    rev: 6.0.0
     hooks:
       - name: check python syntax
         id: flake8
 
   - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.0.0
+    rev: v2.2.0
     hooks:
       - name: format setup.cfg
         id: setup-cfg-fmt
@@ -49,7 +49,7 @@ repos:
           - mdformat-gfm
 
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.27.1
+    rev: v1.29.0
     hooks:
       - name: check YAML syntax + format
         id: yamllint
