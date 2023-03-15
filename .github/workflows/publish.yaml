@@ -22,12 +22,12 @@ jobs:
           fetch-depth: 0
       - name: Set env
         run: |
-          echo "RELEASE_TAG=${GITHUB_REF#refs/*/}" | tee $GITHUB_ENV
+          echo "RELEASE_TAG=${GITHUB_REF#refs/*/}" | tee -a $GITHUB_ENV
           echo "BRANCH=$( \
               git branch -r --contains ${GITHUB_REF} \
               | grep -v HEAD \
               | sed -n 's/ *origin\/\(.*\)/\1/p' \
-            )" | tee $GITHUB_ENV
+            )" | tee -a $GITHUB_ENV
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -41,13 +41,13 @@ jobs:
           echo "RELEASE_TAG=${RELEASE_TAG}"
           if [[ $RELEASE_TAG =~ (([0-9]+)\.([0-9]+)\.([0-9]+))([-./]dev([0-9]+))?$ ]]
           then
-            echo "VERSION=${BASH_REMATCH[0]}" | tee $GITHUB_ENV
-            echo "VERSION_MAJOR=${BASH_REMATCH[2]}" | tee $GITHUB_ENV
-            echo "VERSION_MINOR=${BASH_REMATCH[3]}" | tee $GITHUB_ENV
-            echo "VERSION_PATCH=${BASH_REMATCH[4]}" | tee $GITHUB_ENV
-            echo "VERSION_DEV=${BASH_REMATCH[6]}" | tee $GITHUB_ENV
+            echo "VERSION=${BASH_REMATCH[0]}" | tee -a $GITHUB_ENV
+            echo "VERSION_MAJOR=${BASH_REMATCH[2]}" | tee -a $GITHUB_ENV
+            echo "VERSION_MINOR=${BASH_REMATCH[3]}" | tee -a $GITHUB_ENV
+            echo "VERSION_PATCH=${BASH_REMATCH[4]}" | tee -a $GITHUB_ENV
+            echo "VERSION_DEV=${BASH_REMATCH[6]}" | tee -a $GITHUB_ENV
           else
-            echo "INVALID_TAG=True" | tee $GITHUB_ENV
+            echo "INVALID_TAG=True" | tee -a $GITHUB_ENV
           fi
       - name: Fail on invalid Tag
         if: ${{ env.INVALID_TAG }}
