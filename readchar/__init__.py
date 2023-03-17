@@ -8,7 +8,7 @@ from sys import platform
 from ._config import config
 
 
-if platform.startswith(("linux", "darwin", "freebsd")):
+if platform.startswith(("linux", "darwin", "freebsd", "openbsd")):
     from . import _posix_key as key
     from ._posix_read import readchar, readkey
 elif platform in ("win32", "cygwin"):

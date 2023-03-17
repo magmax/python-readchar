@@ -114,7 +114,7 @@ This library actively supports these operating systems:
 Some operating systems are enabled, but not actively tested or supported:
 
 - macOS
-- FreeBSD
+- FreeBSD / OpenBSD
 
 Theoretically every Unix based system should work, but they will not be actively tested.
 It is also required that somebody provides initial test results before the OS is enabled
