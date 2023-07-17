@@ -80,7 +80,7 @@ A keystroke can be:
     <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SUPR</kbd>,...
 
 > **Note** <kbd>CTRL</kbd>+<kbd>C</kbd> will not be returned by `readkey()`, but instead
-> raise a `KeyboardInterupt`. If you what to handle it yourself, use `readchar()`.
+> raise a `KeyboardInterupt`. If you want to handle it yourself, use `readchar()`.
 
 ### `readchar.key` module
 
