@@ -1,3 +1,4 @@
+# flake8: noqa E231
 from readchar import key, readkey
 
 
