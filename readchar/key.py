@@ -1,5 +1,5 @@
 # flake8: noqa E401,E403
-# this file exists only for backwards compatability
+# this file exists only for backwards compatibility
 # it allow the use of `import readchar.key`
 
 from . import platform
