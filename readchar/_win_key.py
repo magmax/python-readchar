@@ -27,7 +27,7 @@ END = "\x00\x4f"
 PAGE_UP = "\x00\x49"
 PAGE_DOWN = "\x00\x51"
 
-# funcion keys
+# function keys
 F1 = "\x00\x3b"
 F2 = "\x00\x3c"
 F3 = "\x00\x3d"

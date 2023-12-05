@@ -4,7 +4,7 @@ from . import _base_key as key
 
 
 class config:
-    """Static class that containes Constants used throughout the libary.
+    """Static class that contains Constants used throughout the library.
     You can directly use the class-attributes, do not create instances of it!"""
 
     def __new__(cls):
