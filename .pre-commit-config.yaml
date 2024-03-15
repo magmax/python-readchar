@@ -31,11 +31,13 @@ repos:
         id: flake8
 
   - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.2.0
+    rev: v2.4.0
     hooks:
       - name: format setup.cfg
         id: setup-cfg-fmt
-        args: [--include-version-classifiers]
+        args:
+          - "--include-version-classifiers"
+          - "--min-py-version=3.7"
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
