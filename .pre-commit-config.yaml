@@ -35,9 +35,7 @@ repos:
     hooks:
       - name: format setup.cfg
         id: setup-cfg-fmt
-        args:
-          - "--include-version-classifiers"
-          - "--min-py-version=3.7"
+        args: [--include-version-classifiers]
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
