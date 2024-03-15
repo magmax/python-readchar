@@ -1,13 +1,11 @@
 # flake8: noqa E401,E403
 # this file exists only for backwards compatibility
 # it allows the use of `import readchar.key`
+import sys
 
-from . import platform
+from . import key as __key
 
 
-if platform.startswith(("linux", "darwin", "freebsd")):
-    from ._posix_key import *
-elif platform in ("win32", "cygwin"):
-    from ._win_key import *
-else:
-    raise NotImplementedError(f"The platform {platform} is not supported yet")
+for __k, __v in vars(__key).items():
+    if not __k.startswith("__"):
+        setattr(sys.modules[__name__], __k, __v)
