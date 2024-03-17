@@ -3,13 +3,13 @@ import sys
 import pytest
 
 
-if sys.platform.startswith("linux"):
+if sys.platform.startswith(("darwin", "linux")):
     import termios
 
 
-# ignore all tests in this folder if not on linux
+# ignore all tests in this folder if not on Unix
 def pytest_ignore_collect(path, config):
-    if not sys.platform.startswith("linux"):
+    if not sys.platform.startswith(("darwin", "linux")):
         return True
 
 
