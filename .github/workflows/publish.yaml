@@ -72,12 +72,12 @@ jobs:
         if: ${{ env.VERSION_DEV }}
         run: |
           v=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH-dev$((VERSION_DEV+1))
-          sed -i "s/version = \".*\"$/version = = \"$v\"/" pyproject.toml
+          sed -i "s/version = \".*\"$/version = \"$v\"/" pyproject.toml
       - name: increment patch version
         if: ${{ !env.VERSION_DEV }}
         run: |
           v=$VERSION_MAJOR.$VERSION_MINOR.$((VERSION_PATCH+1))-dev0
-          sed -i "s/version = \".*\"$/version = = \"$v\"/" pyproject.toml
+          sed -i "s/version = \".*\"$/version = \"$v\"/" pyproject.toml
       - name: commit new version-number
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
