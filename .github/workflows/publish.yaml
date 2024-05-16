@@ -60,7 +60,7 @@ jobs:
           sed -i "s/version = \".*\"$/version = \"haha\"/" pyproject.toml
       - name: Build sdist and bdist_wheel
         run: |
-          python setup.py sdist bdist_wheel
+          python -m build
       - name: publish to PyPi
         env:
           TWINE_USERNAME: __token__
