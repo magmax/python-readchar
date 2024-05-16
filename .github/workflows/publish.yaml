@@ -57,7 +57,7 @@ jobs:
 
       - name: Write Version to pyproject.toml
         run: |
-          sed -i "s/version = \".*\"$/version = \"haha\"/" pyproject.toml
+          sed -i "s/version = \".*\"$/version = \"$VERSION\"/" pyproject.toml
       - name: Build sdist and bdist_wheel
         run: |
           python -m build
