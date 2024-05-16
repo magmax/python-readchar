@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readchar"
+version = "4.1.0-dev3"
+requires-python = ">= 3.8"
+dependencies = []
+authors = [
+	{ name = "Miguel Ángel García", email="miguelangel.garcia@gmail.com" },
+	{ name = "Jan Wille", email = "mail@janwille.de" },
+]
+maintainers = [{ name = "Jan Wille", email = "mail@janwille.de" }]
+keywords = ["characters", "keystrokes", "stdin", "command line"]
+classifiers = [
+	"Development Status :: 5 - Production/Stable",
+	"License :: OSI Approved :: MIT License",
+	"Operating System :: Microsoft :: Windows",
+	"Operating System :: POSIX :: Linux",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3 :: Only",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python :: Implementation :: CPython",
+	"Environment :: Console",
+	"Intended Audience :: Developers",
+	"Topic :: Software Development",
+	"Topic :: Software Development :: User Interfaces",
+]
+description = "Library to easily read single chars and key strokes"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { file = "LICENCE" }
+
+[project.urls]
+Homepage = "https://pypi.org/project/readchar"
+#Documentation = "https://readthedocs.org"
+Repository = "https://github.com/magmax/python-readchar"
+Issues = "https://github.com/magmax/python-readchar/issues"
+Changelog = "https://github.com/magmax/python-readchar/releases"

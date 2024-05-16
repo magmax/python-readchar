@@ -1,5 +1,6 @@
 -e .
+build
 pre-commit
-pytest
+pytest>=6.0
 pytest-cov
 wheel

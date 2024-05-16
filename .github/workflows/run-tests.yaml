@@ -42,9 +42,9 @@ jobs:
           python-version: '3.x'
           cache: pip
       - run: |
-          pip install setuptools wheel
+          pip install build
       - run: |
-          python setup.py sdist bdist_wheel
+          python -m build
 
   pytest:
     runs-on: ${{ matrix.os }}
