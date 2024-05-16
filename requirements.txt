@@ -1,5 +1,6 @@
--e .
-pre-commit
-pytest
-pytest-cov
+build
 wheel
+pre-commit
+pytest>=6.0
+pytest-cov
+-e .

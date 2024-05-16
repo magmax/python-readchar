@@ -11,4 +11,4 @@ pre-commit precommit:
 	@pre-commit run -a
 
 build pack readchar:
-	@python setup.py sdist bdist_wheel
+	@python -m build

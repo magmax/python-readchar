@@ -1,0 +1,12 @@
+max-complexity = 12
+max-line-length = 88
+exclude =
+  __pycache__/
+  .git/
+  .venv/
+  .pytest_cache/
+show-source = true
+statistics = true
+count = true
+per-file-ignores =
+  readchar/*_key.py:F403,F405

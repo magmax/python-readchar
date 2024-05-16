@@ -1,6 +1,9 @@
-"""Library to easily read single chars and key strokes"""
+import importlib.metadata
 
-__version__ = "4.0.7-dev0"
+
+__doc__ = """Library to easily read single chars and key strokes"""
+
+__version__ = importlib.metadata.version(__package__)
 __all__ = ["readchar", "readkey", "key", "config"]
 
 from sys import platform

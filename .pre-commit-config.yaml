@@ -30,13 +30,6 @@ repos:
       - name: check python syntax
         id: flake8
 
-  - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.5.0
-    hooks:
-      - name: format setup.cfg
-        id: setup-cfg-fmt
-        args: [--include-version-classifiers]
-
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
     hooks:
