@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "readchar"
-version = = "4.1.0-dev3"
+version = "4.1.0-dev3"
 requires-python = ">= 3.8"
 dependencies = []
 authors = [
-	{ name = "Miguel Ángel García" },
+	{ name = "Miguel Ángel García", email="miguelangel.garcia@gmail.com" },
 	{ name = "Jan Wille", email = "mail@janwille.de" },
 ]
 maintainers = [{ name = "Jan Wille", email = "mail@janwille.de" }]
