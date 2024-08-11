@@ -7,8 +7,8 @@ def readchar() -> str:
     """Reads a single character from the input stream.
     Blocks until a character is available."""
 
-    # manual byte decoding because some bytes in windows are not utf-8 encodable.
-    return chr(int.from_bytes(msvcrt.getch(), "big"))
+    # read a single wide character from the input.
+    return msvcrt.getwch()
 
 
 def readkey() -> str:
@@ -21,7 +21,7 @@ def readkey() -> str:
         raise KeyboardInterrupt
 
     # if it is a normal character:
-    if ch not in "\x00\xe0":
+    if ch not in "\x00\xc3\xa0":
         return ch
 
     # if it is a scpeal key, read second half:
