@@ -3,8 +3,6 @@ import sys
 import pytest
 
 
-# if sys.platform in ("win32", "cygwin"):
-#     import msvcrt
 
 
 # ignore all tests in this folder if not on windows
