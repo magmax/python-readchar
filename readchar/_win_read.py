@@ -21,7 +21,7 @@ def readkey() -> str:
         raise KeyboardInterrupt
 
     # if it is a normal character:
-    if ch not in "\x00\xc3\xa0":
+    if ch not in "\x00\xe0":
         return ch
 
     # if it is a scpeal key, read second half:
