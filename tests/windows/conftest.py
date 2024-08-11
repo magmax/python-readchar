@@ -21,9 +21,6 @@ def patched_stdin(monkeypatch):
             characters = iter(string)
 
             # Patch msvcrt.getwch to return the next character from the iterator.
-            # Don't use next(iter(string)) as it creates a new iterator each time.
-            # For example,
-            # if you use a new iterator, cursor_up (\x00\x48) will be read as \x00\x00.
             monkeypatch.setattr("msvcrt.getwch", lambda: next(characters))
 
     return mocked_stdin()
