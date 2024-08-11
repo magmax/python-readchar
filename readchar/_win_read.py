@@ -6,9 +6,16 @@ from ._config import config
 def readchar() -> str:
     """Reads a single utf8-character from the input stream.
     Blocks until a character is available."""
+    # read the first character.
+    ch = [msvcrt.getwch()]
 
-    # read a single wide character from the input.
-    return msvcrt.getwch()
+    # if the first character indicates a surrogate pair, read the second character.
+    if 0xD800 <= ord(ch[0]) <= 0xDFFF:
+        ch.append(msvcrt.getwch())
+
+    # combine the characters into a single utf-16 encoded string.
+    # this prevents the character from being treated as a surrogate pair again.
+    return "".join(ch).encode("utf-16", errors="surrogatepass").decode("utf-16")
 
 
 def readkey() -> str:
