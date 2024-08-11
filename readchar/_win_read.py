@@ -4,7 +4,7 @@ from ._config import config
 
 
 def readchar() -> str:
-    """Reads a single character from the input stream.
+    """Reads a single utf8-character from the input stream.
     Blocks until a character is available."""
 
     # read a single wide character from the input.
