@@ -65,3 +65,22 @@ def test_navigationKeys(seq, key, patched_stdin):
 def test_functionKeys(seq, key, patched_stdin):
     patched_stdin.push(seq)
     assert key == readkey()
+
+
+@pytest.mark.parametrize(
+    ["seq", "key"],
+    [
+        ("\ud83d\ude00", "😀"),
+        ("\ud83d\ude18", "😘"),
+        ("\ud83d\ude09", "😉"),
+        ("\ud83d\udc4d", "👍"),
+        ("\ud83d\udc35", "🐵"),
+        ("\ud83c\udf47", "🍇"),
+        ("\ud83c\udf83", "🎃"),
+        ("\ud83d\udc53", "👓"),
+        ("\ud83c\udfc1", "🏁"),
+    ],
+)
+def test_UnicodeSurrogates(seq, key, patched_stdin):
+    patched_stdin.push(seq)
+    assert key == readkey()

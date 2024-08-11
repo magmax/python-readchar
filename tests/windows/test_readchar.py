@@ -62,3 +62,18 @@ def test_controlCharacters(seq, key, patched_stdin):
 def test_CTRL_Characters(seq, key, patched_stdin):
     patched_stdin.push(seq)
     assert key == readchar()
+
+
+@pytest.mark.parametrize(
+    ["seq", "key"],
+    [
+        ("\xe4", "ä"),
+        ("\xe1", "á"),
+        ("\xe5", "å"),
+        ("\xdf", "ß"),
+        ("\u304c", "が"),
+    ],
+)
+def test_Unicode_Characters(seq, key, patched_stdin):
+    patched_stdin.push(seq)
+    assert key == readchar()
