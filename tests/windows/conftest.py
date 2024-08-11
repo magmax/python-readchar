@@ -3,8 +3,6 @@ import sys
 import pytest
 
 
-
-
 # ignore all tests in this folder if not on windows
 def pytest_ignore_collect(path, config):
     if sys.platform not in ("win32", "cygwin"):
