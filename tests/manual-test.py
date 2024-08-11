@@ -7,12 +7,16 @@ from readchar import key, readkey
 known_keys = {v: k for k, v in reversed(vars(key).items()) if not k.startswith("__")}
 
 
-while True:
-    data = readkey()
+def main():
+    while True:
+        read_key = readkey()
+        mykey = f"got {known_keys[read_key]}" if read_key in known_keys else read_key
 
-    if data in known_keys:
-        print(f"got {known_keys[data]}", end="")
-    else:
-        print(data, end="")
+        print(f"{mykey} - 0x{ read_key.encode().hex() }")
 
-    print(" - " + "".join([f"\\x{ord(c):02x}" for c in data]))
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nKeyboardInterrupt")
