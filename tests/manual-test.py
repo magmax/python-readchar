@@ -3,7 +3,7 @@ from readchar import key, readkey
 
 
 # construct an inverted code -> key-name mapping
-# we need to revese the items so that aliases won't overrive the original name later on
+# we need to reverse the items so that aliases won't override the original name later on
 known_keys = {v: k for k, v in reversed(vars(key).items()) if not k.startswith("__")}
 
 
