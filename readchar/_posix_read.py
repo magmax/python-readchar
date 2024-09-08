@@ -19,7 +19,7 @@ def readchar() -> str:
     term = termios.tcgetattr(fd)
     try:
         term[3] &= ~(termios.ICANON | termios.ECHO | termios.IGNBRK | termios.BRKINT)
-        termios.tcsetattr(fd, termios.TCSAFLUSH, term)
+        termios.tcsetattr(fd, termios.TCSADRAIN, term)
 
         ch = sys.stdin.read(1)
     finally:
