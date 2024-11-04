@@ -136,4 +136,6 @@ jobs:
         run: git -c user.name="$USER" -c user.email="$EMAIL" commit --all -m "increment version after release"
 
       - name: push updates
-        run: git push origin "HEAD:$(git log --pretty='%D' | grep -oPm1 '(?<=origin/).*')"
+        run: |
+          git fetch origin 'refs/heads/*:refs/remotes/origin/*'
+          git push origin "HEAD:$(git log --pretty='%D' | grep -oPm1 '(?<=origin/).*')"
