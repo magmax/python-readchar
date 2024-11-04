@@ -28,7 +28,7 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
           # echo "NEW_VERSION=${RELEASE_TAG#v*}" | tee -a $GITHUB_OUTPUT
-          echo "NEW_VERSION=4.2.1" | tee -a $GITHUB_OUTPUT
+          echo "NEW_VERSION=4.2.0-dev1" | tee -a $GITHUB_OUTPUT
           OLD_VERSION=$(curl -s https://pypi.org/pypi/readchar/json | jq -r .info.version)
           echo "OLD_VERSION=${OLD_VERSION}" | tee -a $GITHUB_OUTPUT
 
@@ -55,10 +55,11 @@ jobs:
     needs: check-version
     permissions:
       contents: write
-
     env:
       VERSION: ${{ needs.check-version.outputs.version }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: update pyproject.toml
         run: sed -i "s/version = \".*\"$/version = \"$VERSION\"/" pyproject.toml
       - name: commit version
