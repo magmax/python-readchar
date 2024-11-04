@@ -28,7 +28,7 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
           # echo "NEW_VERSION=${RELEASE_TAG#v*}" | tee -a $GITHUB_OUTPUT
-          echo "NEW_VERSION=4.1.0" | tee -a $GITHUB_OUTPUT
+          echo "NEW_VERSION=4.2.1" | tee -a $GITHUB_OUTPUT
           OLD_VERSION=$(curl -s https://pypi.org/pypi/readchar/json | jq -r .info.version)
           echo "OLD_VERSION=${OLD_VERSION}" | tee -a $GITHUB_OUTPUT
 
@@ -63,7 +63,10 @@ jobs:
       - name: update pyproject.toml
         run: sed -i "s/version = \".*\"$/version = \"$VERSION\"/" pyproject.toml
       - name: commit version
-        run: git commit --all -m "release v$Version"
+        env:
+          USER: github-actions[bot]
+          EMAIL: github-actions[bot]@users.noreply.github.com
+        run: git -c user.name="$USER" -c user.email="$EMAIL" commit --all -m "release v$Version"
       - name: update tag
         run: git tag -f "v$VERSION"
       - name: push updates
