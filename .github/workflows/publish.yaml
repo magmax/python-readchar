@@ -12,7 +12,7 @@ on:
 
 jobs:
 
-  check-version: # ---------------------------------------------------------------------
+  check-version:  # --------------------------------------------------------------------
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,7 +22,7 @@ jobs:
         id: get
         run: |
           echo "NEW_VERSION=$(echo '${{ github.ref_name }}' | cut -c2-)" | tee -a $GITHUB_OUTPUT
-          echo "OLD_VERSION=$(curl -s https://pypi.org/pypi/readchar/json | jq -r .info.version)" | tee -a $GITHUB_OUTPUT
+          echo "OLD_VERSION=$(curl -s https://pypi.org/pypi/readchar/json |jq -r .info.version)" | tee -a $GITHUB_OUTPUT
 
       - name: validate version
         id: valid
@@ -40,7 +40,7 @@ jobs:
       version: ${{ steps.get.outputs.NEW_VERSION }}
 
 
-  tag: # -------------------------------------------------------------------------------
+  tag:  # ------------------------------------------------------------------------------
     runs-on: ubuntu-latest
     needs: check-version
     permissions:
@@ -100,7 +100,7 @@ jobs:
       #   run: twine upload dist/*
 
 
-  increment: # -------------------------------------------------------------------------
+  increment:  # ------------------------------------------------------------------------
     runs-on: ubuntu-latest
     needs: deploy
     steps:
