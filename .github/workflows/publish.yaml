@@ -22,13 +22,7 @@ jobs:
 
       - name: get versions
         id: get
-        env:
-          RELEASE_TAG: ${{ github.ref_name }}
-        run: |
-          # echo "NEW_VERSION=${RELEASE_TAG#v*}" | tee -a $GITHUB_OUTPUT
-          echo "NEW_VERSION=4.2.1" | tee -a $GITHUB_OUTPUT
-          OLD_VERSION=$(curl -s https://pypi.org/pypi/readchar/json | jq -r .info.version)
-          echo "OLD_VERSION=${OLD_VERSION}" | tee -a $GITHUB_OUTPUT
+        run: echo "OLD_VERSION=$(curl -s https://pypi.org/pypi/readchar/json | jq -r .info.version)" | tee -a $GITHUB_OUTPUT
 
       - name: validate version
         shell: python
@@ -36,7 +30,7 @@ jobs:
           from sys import exit
           from packaging import version
 
-          new_version = version.parse("${{ steps.get.outputs.NEW_VERSION }}")
+          new_version = version.parse("${{ github.ref_name }}")
           old_version = version.parse("${{ steps.get.outputs.OLD_VERSION }}")
 
           if not new_version > old_version:
@@ -73,9 +67,6 @@ jobs:
       - name: push updates
         run: git push --tags -f
 
-    outputs:
-      ref: v${{ env.VERSION }}
-
 
   deploy:  # ---------------------------------------------------------------------------
     runs-on: ubuntu-latest
@@ -96,6 +87,11 @@ jobs:
       - name: Build sdist and bdist_wheel
         run: python -m build
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
       # - name: publish to PyPi
       #   env:
       #     TWINE_USERNAME: __token__
@@ -106,15 +102,22 @@ jobs:
   increment: # -------------------------------------------------------------------------
     runs-on: ubuntu-latest
     needs: deploy
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.tag.outputs.ref }}
+          fetch-depth: 3
+
+      - name: get branch
+        run: |
+          git fetch
+          git branch tmp --track $(git log --pretty='%D' | grep -o -m1 "fork/[^']*")
+          git checkout tmp
 
       - name: get versions
         id: get
-        shell: pyhton
+        shell: python
         run: |
           from sys import exit
           from os import environ
