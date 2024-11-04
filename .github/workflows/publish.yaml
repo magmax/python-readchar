@@ -14,13 +14,11 @@ on:
 
 jobs:
 
-  check-version:
-    name: check version
+  check-version: # ---------------------------------------------------------------------
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: get versions
         id: get
@@ -49,8 +47,7 @@ jobs:
       version: ${{ steps.get.outputs.NEW_VERSION }}
 
 
-  commit:
-    name: write version and tag
+  tag: # -------------------------------------------------------------------------------
     runs-on: ubuntu-latest
     needs: check-version
     permissions:
@@ -59,89 +56,89 @@ jobs:
       VERSION: ${{ needs.check-version.outputs.version }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: update pyproject.toml
-        run: sed -i "s/version = \".*\"$/version = \"$VERSION\"/" pyproject.toml
+        run: sed -i -r 's/^(version = ).*$/\1"$VERSION"/' pyproject.toml
+
       - name: commit version
         env:
           USER: github-actions[bot]
           EMAIL: github-actions[bot]@users.noreply.github.com
-        run: git -c user.name="$USER" -c user.email="$EMAIL" commit --all -m "release v$Version"
+        run: git -c user.name="$USER" -c user.email="$EMAIL" commit --all -m "release v$VERSION"
+
       - name: update tag
         run: git tag -f "v$VERSION"
+
       - name: push updates
         run: git push --tags -f
 
+    outputs:
+      ref: v${{ env.VERSION }}
 
-  # deploy:
-  #   runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #     - name: Set env
-  #       run: |
-  #         echo "RELEASE_TAG=${GITHUB_REF#refs/*/}" | tee -a $GITHUB_ENV
-  #         echo "BRANCH=$( \
-  #             git branch -r --contains ${GITHUB_REF} \
-  #             | grep -v HEAD \
-  #             | sed -n 's/ *origin\/\(.*\)/\1/p' \
-  #           )" | tee -a $GITHUB_ENV
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v4
-  #       with:
-  #         python-version: '3.x'
-  #         cache: pip
-  #     - name: Install dependencies
-  #       run: |
-  #           pip install build twine
-  #     - name: get infos from Tag
-  #       run: |
-  #         echo "RELEASE_TAG=${RELEASE_TAG}"
-  #         if [[ $RELEASE_TAG =~ (([0-9]+)\.([0-9]+)\.([0-9]+))([-./]dev([0-9]+))?$ ]]
-  #         then
-  #           echo "VERSION=${BASH_REMATCH[0]}" | tee -a $GITHUB_ENV
-  #           echo "VERSION_MAJOR=${BASH_REMATCH[2]}" | tee -a $GITHUB_ENV
-  #           echo "VERSION_MINOR=${BASH_REMATCH[3]}" | tee -a $GITHUB_ENV
-  #           echo "VERSION_PATCH=${BASH_REMATCH[4]}" | tee -a $GITHUB_ENV
-  #           echo "VERSION_DEV=${BASH_REMATCH[6]}" | tee -a $GITHUB_ENV
-  #         else
-  #           echo "INVALID_TAG=True" | tee -a $GITHUB_ENV
-  #         fi
-  #     - name: Fail on invalid Tag
-  #       if: ${{ env.INVALID_TAG }}
-  #       uses: actions/github-script@v6
-  #       with:
-  #         script: core.setFailed('Invalid Tag name used with this release!')
+  deploy:  # ---------------------------------------------------------------------------
+    runs-on: ubuntu-latest
+    needs: tag
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  #     - name: Write Version to pyproject.toml
-  #       run: |
-  #         sed -i "s/version = \".*\"$/version = \"$VERSION\"/" pyproject.toml
-  #     - name: Build sdist and bdist_wheel
-  #       run: |
-  #         python -m build
-  #     - name: publish to PyPi
-  #       env:
-  #         TWINE_USERNAME: __token__
-  #         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  #       run: |
-  #           twine upload dist/*
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          cache: pip
 
-  #     - name: increment development version
-  #       if: ${{ env.VERSION_DEV }}
-  #       run: |
-  #         v=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH-dev$((VERSION_DEV+1))
-  #         sed -i "s/version = \".*\"$/version = \"$v\"/" pyproject.toml
-  #     - name: increment patch version
-  #       if: ${{ !env.VERSION_DEV }}
-  #       run: |
-  #         v=$VERSION_MAJOR.$VERSION_MINOR.$((VERSION_PATCH+1))-dev0
-  #         sed -i "s/version = \".*\"$/version = \"$v\"/" pyproject.toml
-  #     - name: commit new version-number
-  #       uses: stefanzweifel/git-auto-commit-action@v4
-  #       with:
-  #         branch: ${{ env.BRANCH }}
-  #         create_branch: true
-  #         commit_message: "increment version after release"
+      - name: Install dependencies
+        run: pip install build twine
+
+      - name: Build sdist and bdist_wheel
+        run: python -m build
+
+      # - name: publish to PyPi
+      #   env:
+      #     TWINE_USERNAME: __token__
+      #     TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      #   run: twine upload dist/*
+
+
+  increment: # -------------------------------------------------------------------------
+    runs-on: ubuntu-latest
+    needs: deploy
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: get versions
+        id: get
+        shell: pyhton
+        run: |
+          from sys import exit
+          from os import environ
+          from packaging import version
+          ver = version.parse("${{ github.ref_name }}")
+          if ver.dev is not None:
+            new_ver = f"{ver.base_version}-dev{ver.dev +1}"
+          else:
+            new_ver = ".".join([ver.major, ver.minor, ver.micro +1]) + "-dev0"
+          with open(environ.get("GITHUB_OUTPUT"), "a") as fp:
+            towrite = f"NEW_VERSION={new_ver}"
+            print(towrite)
+            fp.write(towrite + "\n")
+
+      - name: update pyproject.toml
+        env:
+          VERSION: ${{ steps.get.outputs.NEW_VERSION }}
+        run: sed -i -r 's/^(version = ).*$/\1"$VERSION"/' pyproject.toml
+
+      - name: commit version
+        env:
+          USER: github-actions[bot]
+          EMAIL: github-actions[bot]@users.noreply.github.com
+        run: git -c user.name="$USER" -c user.email="$EMAIL" commit --all -m "increment version after release"
+
+      - name: push updates
+        run: git push
