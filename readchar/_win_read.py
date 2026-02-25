@@ -42,17 +42,20 @@ class ReadChar:
         consisting of multiple characterrs will be read completly and be returned as a
         string matching the definitions in `key.py`.
         Does not require the user to press ENTER."""
-        c = self.char()
+        if self.key_waiting:
+            c = self.char()
 
-        if c in self.config.INTERRUPT_KEYS:
-            raise KeyboardInterrupt
+            if c in self.config.INTERRUPT_KEYS:
+                raise KeyboardInterrupt
 
-        # if it is a normal character:
-        if c not in "\x00\xe0":
-            return c
+            # if it is a normal character:
+            if c not in "\x00\xe0":
+                return c
 
-        # if it is a special key, read second half:
-        return "\x00" + self.char()
+            # if it is a special key, read second half:
+            return "\x00" + self.char()
+        else:
+            return ""
 
 
 def readchar() -> str:

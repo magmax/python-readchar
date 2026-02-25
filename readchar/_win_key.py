@@ -1,5 +1,16 @@
 from ._base_key import *
+import logging
+import sys
+module = sys.modules[__name__]
 
+# default all key to not defined
+# WIP 
+for key in names.keys():
+    if key not in locals():
+        setattr( module, key, None )
+print(dir(module))
+logging.warning(f'most advanced keys are not supported on this device')
+    
 
 # Windows uses scan codes for extended characters. This dictionary
 # translates the second half of the scan codes of special Keys

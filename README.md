@@ -74,25 +74,28 @@ A keystroke can be:
   - characters for cursors/arrows: <kbd>🡩</kbd>, <kbd>🡪</kbd>, <kbd>🡫</kbd>,
     <kbd>🡨</kbd>
   - navigation keys: <kbd>INSERT</kbd>, <kbd>HOME</kbd>,...
-  - function keys: <kbd>F1</kbd> to <kbd>F12</kbd>
+  - function keys: <kbd>F1</kbd> to <kbd>F63</kbd>
   - combinations with <kbd>ALT</kbd>: <kbd>ALT</kbd>+<kbd>A</kbd>,...
   - combinations with <kbd>CTRL</kbd> and <kbd>ALT</kbd>:
     <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SUPR</kbd>,...
 
 > **Note** <kbd>CTRL</kbd>+<kbd>C</kbd> will not be returned by `readkey()`, but instead
-> raise a `KeyboardInterupt`. If you what to handle it yourself, use `readchar()`.
+> raise a `KeyboardInterupt`. If you want to handle it yourself, use `readchar()`.
 
 ### `readchar.key` module
 
-This submodule contains a list of available keys to compare against. The constants are
-defined depending on your operating system, so it should be fully portable. If a key is
+This submodule contains a list of available keys to compare against.
+ - Windows : The constants are defined depending on your operating system, so it should be fully portable. If a key is
 listed here for your platform, `readkey()` can read it, and you can compare against it.
+
+ - Linux : It loads the Values dynamically from ncurse database contained on your computer . All the value can be seen in readchar.key.names
+> <span style='color: red;'>Warning : </span> The keys are not always defined on your computer , in that case it send a warning. the key is then set to None
 
 ### `readchar.config` class
 
 This static class contains configurations for `readchar`. It holds constants that are
 used in other parts of the code as class attributes. You can override/change these to
-modify its behaviour. Here is a description of the existing attributes:
+modify its behavior. Here is a description of the existing attributes:
 
 <dl>
 <dt><code>INTERRUPT_KEYS</code></dt>

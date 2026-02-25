@@ -67,19 +67,32 @@ class ReadChar:
         c1 = self.char()
         if c1 in self.config.INTERRUPT_KEYS:
             raise KeyboardInterrupt
+
         if c1 != "\x1B":
             return c1
+
         c2 = self.char()
         if c2 not in "\x4F\x5B":
             return c1 + c2
+
         c3 = self.char()
+
         if c3 not in "\x31\x32\x33\x35\x36":
             return c1 + c2 + c3
+
         c4 = self.char()
-        if c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+        print(c4)
+        if c4 not in "\x30\x31\x32\x33\x34\x35\x37\x38\x39\x3B":
             return c1 + c2 + c3 + c4
+
         c5 = self.char()
-        return c1 + c2 + c3 + c4 + c5
+        if c5 not in "\x30\x31\x32\x33\x34\x35\x37\x38\x39":
+            return c1 + c2 + c3 + c4 + c5
+
+        c6 = self.char()
+
+        return c1 + c2 + c3 + c4 + c5 + c6
+
 
 
 # Initially taken from:
@@ -126,8 +139,12 @@ def readkey() -> str:
         return c1 + c2 + c3
 
     c4 = readchar()
-    if c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+    if c4 not in "\x30\x31\x33\x34\x35\x37\x38\x39\x3b":
         return c1 + c2 + c3 + c4
 
     c5 = readchar()
-    return c1 + c2 + c3 + c4 + c5
+    if c5 not in "\x30\x31\x33\x34\x35\x37\x38\x39":
+        return c1 + c2 + c3 + c4 + c5
+
+    c6 = readchar()
+    return c1 + c2 + c3 + c4 + c5 + c6

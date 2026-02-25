@@ -1,50 +1,61 @@
 from ._base_key import *
+import subprocess
+import logging
+import sys
+module = sys.modules[__name__]
 
 
 # common
 BACKSPACE = "\x7f"
 
-# cursors
-UP = "\x1b\x5b\x41"
-DOWN = "\x1b\x5b\x42"
-LEFT = "\x1b\x5b\x44"
-RIGHT = "\x1b\x5b\x43"
+#there might be other key that should go here that I don't know
+normal_mode = [
+    "UP",
+    "DOWN",
+    "LEFT",
+    "RIGHT",
+    "END",
+    "BEGIN",
+    "ENTER",
+    "HOME",
+    "PAD_CENTER",
+    "PAD_UP_DOWN",
+    "PAD_UP_RIGHT",
+    "PAD_DOWN_LEFT",
+    "PAD_DOWN_RIGHT"
+]
 
-# navigation keys
-INSERT = "\x1b\x5b\x32\x7e"
-SUPR = "\x1b\x5b\x33\x7e"
-HOME = "\x1b\x5b\x48"
-END = "\x1b\x5b\x46"
-PAGE_UP = "\x1b\x5b\x35\x7e"
-PAGE_DOWN = "\x1b\x5b\x36\x7e"
+keys = {}  # create dico with existing key
 
-# funcion keys
-F1 = "\x1b\x4f\x50"
-F2 = "\x1b\x4f\x51"
-F3 = "\x1b\x4f\x52"
-F4 = "\x1b\x4f\x53"
-F5 = "\x1b\x5b\x31\x35\x7e"
-F6 = "\x1b\x5b\x31\x37\x7e"
-F7 = "\x1b\x5b\x31\x38\x7e"
-F8 = "\x1b\x5b\x31\x39\x7e"
-F9 = "\x1b\x5b\x32\x30\x7e"
-F10 = "\x1b\x5b\x32\x31\x7e"
-F11 = "\x1b\x5b\x32\x33\x7e"
-F12 = "\x1b\x5b\x32\x34\x7e"
+for key in subprocess.check_output(["infocmp","-x","-1"]).decode("utf-8").split(",\n\t") :
+    key = key.split( "=" )
 
-# SHIFT+_
-SHIFT_TAB = "\x1b\x5b\x5a"
-
-# other
-CTRL_ALT_SUPR = "\x1b\x5b\x33\x5e"
-
-# ALT+_
-ALT_A = "\x1b\x61"
-
-# CTRL+ALT+_
-CTRL_ALT_A = "\x1b\x01"
+    if len( key ) > 1 and key[0][0] == "k": # is a key and is attributed
+        keys[ key[0] ] = key[1]
 
 
-# aliases
+for key in names.keys():
+
+    if names[ key ] not in keys.keys():# if the key is not defined
+        logging.warning(f'{key} is not supported on this device')
+        value = None
+
+    else:
+
+        if key in normal_mode:
+            value = "\x1B" + "\x5B" + keys[ names[ key ] ][3:] # terminals tend to be in normal mode and termnfo give app mode
+
+        else:
+            value = "\x1B" + keys[ names[ key ] ][2:] # convert \E  to the escape sequence
+
+
+    setattr( module, key, value )
+
+del key
+del value
+
+
+
 ENTER = LF
-DELETE = SUPR
+SUPR = DELETE
+
